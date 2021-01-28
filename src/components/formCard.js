@@ -43,8 +43,8 @@ const FormCard = () => {
         <Divider plain style={{color: '#ACACAC'}}>Or pay with card</Divider>
 
         <Form onFinish={handleSubmit} layout="vertical">
-          <Form.Item name="email" label="Email" rules={[{ required: true, message: 'Email is required' }]}>
-            <Input name="email" />
+          <Form.Item name="email" label="Email" rules={[{ required: true, message: 'Please enter valid email address', type: 'email' }]}>
+            <Input type="email" name="email" />
           </Form.Item>
 
           <Form.Item label="Card">
@@ -52,28 +52,28 @@ const FormCard = () => {
               <Form.Item
                 name="cardNo"
                 noStyle
-                rules={[{ required: true, message: 'Card number is required' }]}
+                rules={[{ required: true, message: 'Please enter valid 16 digit card number', len: 16 }]}
               >
                 <Input name="card" type="number" placeholder="1234 1234 1234 1234" suffix={cardSuffix} />
               </Form.Item>
               <Form.Item
                 name="expiry"
                 noStyle
-                rules={[{ required: true, message: 'Expiry date is required' }]}
+                rules={[{ required: true, message: 'Please enter card expiry date' }]}
               >
                 <InputMask style={{ width: '50%', height: '32px', padding: '4px 11px' }} name="expiry" mask="99/99" maskChar=" " placeholder="MM/YY" />
               </Form.Item>
               <Form.Item
                 name="CVC"
                 noStyle
-                rules={[{ required: true, message: 'CVC is required' }]}
+                rules={[{ required: true, message: 'Please enter CVC code' }]}
               >
                 <Input type="password" maxLength="3" style={{ width: '50%' }} name="CVC" placeholder="CVC" suffix={cvcSuffix} />
               </Form.Item>
             </Input.Group>
           </Form.Item>
 
-          <Form.Item name="name" label="Name on card" rules={[{ required: true, message: 'Name is required' }]}>
+          <Form.Item name="name" label="Name on card" rules={[{ required: true, message: 'Please enter valid name', pattern: /^[A-Za-z]+$/ }]}>
             <Input name="name" />
           </Form.Item>
 
@@ -82,7 +82,7 @@ const FormCard = () => {
               <Form.Item
                 name="country"
                 noStyle
-                rules={[{ required: true, message: 'Country is required' }]}
+                rules={[{ required: true, message: 'Please select your country' }]}
               >
                 <Select style={{ width: '100%' }} name="country" placeholder="Select country">
                   {
@@ -95,7 +95,7 @@ const FormCard = () => {
               <Form.Item
                 name="zip"
                 noStyle
-                rules={[{ required: true, message: 'Zip code is required' }]}
+                rules={[{ required: true, message: 'Please enter your zip code' }]}
               >
                 <InputMask style={{ height: '32px', padding: '4px 11px' }} name="zip" mask="999999" maskChar=" " placeholder="ZIP" />
               </Form.Item>
