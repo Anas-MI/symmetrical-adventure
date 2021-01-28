@@ -1,0 +1,163 @@
+body {
+  font-family: 'Montserrat', sans-serif !important;
+  font-family: 14px;
+}
+
+.row {
+  margin: auto 0 !important;
+}
+
+#into-section {
+  .section-row {
+    height: 100vh;
+  }
+  .left-side {
+    background: #292A2E;
+    color: $primary-white;
+    height: 100%;
+  }
+  .right-side {
+    padding: 6% !important;
+    .form-card {
+      width: 400px;
+      .apple-btn {
+        background: $apple-btn;
+        border-color: $apple-btn;
+        border: 0;
+        border-radius: 4px;
+        &.ant-btn {
+          background: $apple-btn;
+          border: 0;
+          color: $primary-white;
+          padding: 6px 0 32px;
+          font-size: 18px;
+          font-weight: 600;
+          border-radius: 4px;
+          &:hover, &:focus {
+            background: $apple-btn;
+            color: $primary-white;
+          }
+        }
+        .anticon-apple svg {
+          margin-top: -6px;
+        }
+      }
+      .pay-btn {
+        background: $payment-btn;
+        border-color: $payment-btn;
+        border: 0;
+        border-radius: 4px;
+        &.ant-btn {
+          background: $payment-btn;
+          border: 0;
+          color: $primary-white;
+          padding: 8px 0 30px;
+          font-size: 14px;
+          border-radius: 4px;
+          &:hover, &:focus {
+            background: $payment-btn;
+            color: $primary-white;
+          }
+        }
+      }
+      .ant-form-item-label {
+        label {
+          font-size: 13px !important;
+        }
+      }
+      .ant-form-item {
+        margin-bottom: 12px !important;
+        .ant-form-item-control-input-content {
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 0px 2px 0 rgba(0, 0, 0, 0.01);
+          .input, .ant-select-selector {
+            color: #A7A8AC;
+          }
+        }
+      }
+      .ant-form-item-explain-error div {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.ant-form-item-control-input-content input {
+  border: 1px solid #d9d9d9;
+  width: 100%;
+}
+
+.ant-form-item-control-input-content input:hover, .ant-form-item-control-input-content input:focus {
+  border: 1px solid #d9d9d9;
+  outline: none;
+}
+
+
+
+label.ant-form-item-required::before {
+  content: '' !important;
+  display: none !important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+::-webkit-input-placeholder {
+  color: #A7A8AC;
+}
+
+.anticon {
+  top: -2px !important;
+}
+
+.ant-message-custom-content {
+  font-size: 13px;
+}
+
+.copyrights {
+  display: flex;
+}
+
+.mobile-copyrights {
+  background: #292A2E;
+  padding: 16px 0;
+}
+
+@media only screen and (min-width: 992px) {
+  .mobile-copyrights {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .right-side-section {
+    justify-content: center;
+  }
+  #into-section .left-side {
+    height: auto;
+    padding: 56px 0;
+  }
+  .copyrights {
+    display: none !important;
+  }
+  .section-row {
+    height: auto;
+  }
+  .right-side {
+    height: 80vh;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .form-card {
+    width: 100%;
+  }
+}
