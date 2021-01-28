@@ -72,6 +72,11 @@ body {
           input, .ant-select-selector {
             color: #A7A8AC;
           }
+          .ant-input-affix-wrapper {
+            .ant-input {
+              border: none !important;
+            }
+          }
         }
       }
       .ant-form-item-explain-error div {
