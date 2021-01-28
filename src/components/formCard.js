@@ -47,7 +47,7 @@ const FormCard = () => {
             <Input type="email" name="email" />
           </Form.Item>
 
-          <Form.Item label="Card">
+          <Form.Item label="Card information">
             <Input.Group compact>
               <Form.Item
                 name="cardNo"
