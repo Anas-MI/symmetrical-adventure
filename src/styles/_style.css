@@ -168,3 +168,7 @@ input[type=number] {
     width: 100%;
   }
 }
+
+.ant-input {
+  border: none;
+}
