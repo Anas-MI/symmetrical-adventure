@@ -73,7 +73,7 @@ const FormCard = () => {
             </Input.Group>
           </Form.Item>
 
-          <Form.Item name="name" label="Name on card" rules={[{ required: true, message: 'Please enter valid name', pattern: /^[A-Za-z]+$/ }]}>
+          <Form.Item name="name" label="Name on card" rules={[{ required: true, message: 'Please enter valid name', pattern: /^[a-zA-Z ]*$/ }]}>
             <Input name="name" />
           </Form.Item>
 
