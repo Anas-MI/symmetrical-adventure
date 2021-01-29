@@ -81,7 +81,7 @@ const FormCard = ({ config }) => {
 
       }).catch(err => {
         setloading(false);
-        notification.error({ message: 'Something went wrong' });
+        notification.error({ message: 'Something went wrong'});
         console.log(err)
       })
   }
