@@ -80,8 +80,9 @@ const FormCard = ({ config }) => {
           })
 
       }).catch(err => {
+        console.log(err.response.data.message)
         setloading(false);
-        notification.error({ message: 'Something went wrong'});
+        notification.error({ message: err.response.data && err.response.data.message ? err.response.data.message : 'Something went wrong' });
         console.log(err)
       })
   }
@@ -140,7 +141,7 @@ const FormCard = ({ config }) => {
           <Form.Item
             name="name"
             label="Name on card"
-            style={{marginTop: '12px'}}
+            style={{ marginTop: '12px' }}
             rules={[{ required: true, message: 'Please enter valid name', pattern: /^[a-zA-Z ]*$/ }]}>
             <Input name="name" />
           </Form.Item>
