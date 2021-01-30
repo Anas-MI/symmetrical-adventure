@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Card } from 'antd';
 import { ShoppingExtraIcon } from '../assets/Icons/CustomIcons';
 import BK_1 from '../assets/img/BK_1.png';
+import logo2 from '../assets/img/logo2.png';
 export default function ShoppingCard() {
+  const [quantity, setQuantity] = useState(1);
   return (
     <Card
       title={<div className="c-card__title">Shopping Cart</div>}
@@ -18,16 +20,24 @@ export default function ShoppingCard() {
       <ShoppingCardItem
         name={'SV1 Electric Scooter'}
         image={BK_1}
-        cost={'$69/mo.'}
+        cost={69}
+        quantity={quantity}
+        setQuantity={setQuantity}
       />
-      <ShoppingCardItem name={'Beyond +'} image={''} cost={'$0/mo.'} />
+      <ShoppingCardItem
+        name={'Beyond +'}
+        image={logo2}
+        cost={1}
+        quantity={quantity}
+        setQuantity={setQuantity}
+      />
       <div className="row c-card__footer">
         <div className="col-7"></div>
         <div className="col-3">
           <span className="c-card__footer-subtotal">subtotal </span>
-          <span className="c-card__footer-items">2 items</span>
+          <span className="c-card__footer-items">{quantity * 2} items</span>
         </div>
-        <div className="col-2  text-right">$79/mo.</div>
+        <div className="col-2  text-right">${70 * quantity}/mo.</div>
       </div>
     </Card>
   );
@@ -45,22 +55,23 @@ const ShoppingCardItem = (props) => {
           }
           alt={props.name}
           height={50}
+          width={50}
         />
       </div>
       <div className="col-5">{props.name}</div>
       <div className="col-3">
-        <InputNum />
+        <InputNum value={props.quantity} setValue={props.setQuantity} />
       </div>
-      <div className="col-2 text-right">{props.cost}</div>
+      <div className="col-2 text-right">${props.cost}/mo.</div>
     </div>
   );
 };
 
 const InputNum = (props) => {
-  const [value, setValue] = useState(1);
+  const { value, setValue } = props;
   return (
     <div className="c-input-num row">
-      <span className="col-4" onClick={() => setValue(value - 1)}>
+      <span className="col-4" onClick={() => value > 1 && setValue(value - 1)}>
         -
       </span>
       <span className="col-4">{value}</span>

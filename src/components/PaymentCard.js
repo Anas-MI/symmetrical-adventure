@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import payment from '../assets/img/payment.jpg';
 import { VisaIcon } from '../assets/Icons/CustomIcons';
 import cvc from '../assets/img/cvc.png';
@@ -36,6 +36,7 @@ const PaymentCard = ({ config }) => {
   const [state, setState] = useState({
     countryArray: [],
   });
+  const cvcRef = useRef(null);
 
   const elements = useElements();
   const stripe = useStripe();
@@ -130,11 +131,14 @@ const PaymentCard = ({ config }) => {
               value={fullname}
               onChange={(e) => setFullname(e.target.value)}
             />
-            <div classname="col-4">
-              <CardExpiryElement className="c-input " />
-            </div>
-            <div classname="col-6">
-              <CardCvcElement className="c-input " />
+            <div className="row c-card-payment__exp">
+              <div className="col-6">
+                <CardExpiryElement className="c-input " />
+              </div>
+              <div className="col-6">
+                <CardCvcElement className="c-input " ref={cvcRef} />
+                {console.log('cvcRef', cvcRef)}
+              </div>
             </div>
           </div>
           <div className="col-6">

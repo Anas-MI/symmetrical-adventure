@@ -94,7 +94,10 @@ export default function InfoPage() {
       <div className="c-infopage__promo">
         <div className="d-flex justify-content-between c-infopage__promo-title">
           <div className="">Includes Beyond+</div>
-          <div className="">$0/mo. (free)</div>
+          <div className="">
+            $1/mo.
+            {/* (free) */}
+          </div>
         </div>
 
         <div> * Mobile App powered by our AI "Quorra"</div>
