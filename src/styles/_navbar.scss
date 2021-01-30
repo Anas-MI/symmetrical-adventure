@@ -1,6 +1,10 @@
+.nav-link {
+  color: black !important;
+}
 .c-navbar {
   background: #ffffff;
   box-shadow: 0px 3px 30px rgba(137, 137, 137, 0.144914);
+  font-family: $font-roboto;
 
   padding: 0.1rem 1rem !important;
 
@@ -8,9 +12,7 @@
     padding: 0 15px;
     font-size: 14px;
   }
-  .navbar-light .navbar-nav .nav-link {
-    color: black !important;
-  }
+
   .navbar-brand {
     padding-top: 1rem;
     padding-bottom: 1rem;
