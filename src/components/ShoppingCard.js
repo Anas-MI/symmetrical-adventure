@@ -7,7 +7,7 @@ export default function ShoppingCard() {
     <Card
       title={<div className="c-card__title">Shopping Cart</div>}
       bordered={false}
-      extra={<ShoppingExtraIcon />}
+      // extra={<ShoppingExtraIcon />}
       className="c-card border-0"
     >
       <div className="row c-card__list">

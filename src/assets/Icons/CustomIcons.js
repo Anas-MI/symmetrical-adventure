@@ -133,6 +133,22 @@ const ShoppingSvg = () => (
     />
   </svg>
 );
+const CheckSvg = () => (
+  <svg
+    width="20"
+    height="22"
+    viewBox="0 0 20 22"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M10.0001 19.5806C14.6025 19.5806 18.3334 15.609 18.3334 10.7097C18.3334 5.81035 14.6025 1.83868 10.0001 1.83868C5.39771 1.83868 1.66675 5.81035 1.66675 10.7097C1.66675 15.609 5.39771 19.5806 10.0001 19.5806ZM15.152 6.9563C14.8156 6.62201 14.2882 6.64137 13.9742 6.99953L8.68591 13.0311L6.37574 10.9232C6.0263 10.6044 5.50022 10.6475 5.2007 11.0194C4.90118 11.3914 4.94165 11.9514 5.29109 12.2703L8.20776 14.9316C8.54679 15.2409 9.05462 15.2108 9.35929 14.8633L15.1926 8.2101C15.5067 7.85193 15.4885 7.29059 15.152 6.9563Z"
+      fill="#FD0000"
+    />
+  </svg>
+);
 
 export const HeartIcon = (props) => <Icon component={HeartSvg} {...props} />;
 export const CartPurpIcon = (props) => (
@@ -154,3 +170,4 @@ export const ShoppingExtraIcon = (props) => (
 export const DeliveryExtraIcon = (props) => (
   <Icon component={DeliveryExtraSvg} {...props} />
 );
+export const CheckIcon = (props) => <Icon component={CheckSvg} {...props} />;
