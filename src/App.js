@@ -61,7 +61,13 @@ const App = () => {
               </div>
             </div>
           </Card>
-          <PaymentCard />
+          <Elements stripe={stripePromise}>
+            <PaymentCard config={config} />
+          </Elements>
+          {/* 
+          <Elements stripe={stripePromise}>
+            <FormCard config={config} />
+          </Elements> */}
         </div>
       </div>
     </React.Fragment>

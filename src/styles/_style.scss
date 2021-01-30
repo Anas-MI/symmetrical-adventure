@@ -283,8 +283,73 @@ input[type='number'] {
       box-shadow: 0px 10px 30px rgba(209, 213, 223, 0.5);
       border-radius: 20px;
       width: 550px;
-      margin: 0 auto 40px;
+      margin: 0 auto 30px;
+      &-payment {
+        padding-bottom: 1rem;
+        .c-input {
+          margin: 0.5rem 0;
+        }
+      }
+      &__btn {
+        background: #fd0000;
+        border-radius: 40px;
 
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 29px;
+        text-align: center;
+        border: 0;
+        padding: 0.5rem 1.5rem;
+        color: #ffffff;
+      }
+      &__card-represent {
+        background: linear-gradient(206.57deg, #517afb 0%, #5351fb 83.33%);
+        box-shadow: 0px 5px 20px #c0c7d6;
+        border-radius: 5px;
+        background: linear-gradient(206.57deg, #517afb 0%, #5351fb 83.33%);
+        box-shadow: 0px 5px 20px #c0c7d6;
+        border-radius: 3px;
+        height: 100%;
+        width: 100%;
+        color: white;
+        padding: 1rem;
+        .col,
+        .col-1,
+        .col-10,
+        .col-11,
+        .col-12,
+        .col-2,
+        .col-3,
+        .col-4,
+        .col-5,
+        .col-6,
+        .col-7,
+        .col-8,
+        .col-9 {
+          position: relative;
+          width: 100%;
+          padding-right: 5px;
+          padding-left: 5px;
+        }
+        &-number {
+          padding-bottom: 1rem;
+          padding-top: 1rem;
+          letter-spacing: 1px;
+          font-weight: bold;
+          font-size: 16px;
+        }
+        &-key {
+          font-size: 12px;
+          opacity: 0.5;
+        }
+        &-value {
+          font-size: 12px;
+
+          padding: 0.2rem 0;
+        }
+      }
       &__title {
         color: $brand-gray;
         // font-family: Roboto;
@@ -373,6 +438,20 @@ input[type='number'] {
       border-radius: 5px;
       width: 70px;
       height: 70px;
+    }
+  }
+  &__promo {
+    background: linear-gradient(135deg, #9025fc 0%, #1308fe 100%);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: white;
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+    width: 80%;
+    font-size: 13px;
+    &-title {
+      font-size: 17px;
+      padding-bottom: 10px;
     }
   }
 }

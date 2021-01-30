@@ -50,44 +50,58 @@ export default function InfoPage() {
         tempor incididunt labore. Lorem ipsum dolor sit amet, consectetur
         adipiscing elit, sed do eiusmod tempor incididunt labore.
       </p>
-      <div className="row">
-        <div className="">
-          <CheckIcon />
+      <div>
+        <div className="row">
+          <div className="">
+            <CheckIcon />
+          </div>
+          <div
+            className="pl-2 "
+            style={{
+              alignSelf: 'flex-end',
+            }}
+          >
+            Lorem ipsum dolor sit amet
+          </div>
         </div>
-        <div
-          className="pl-2 "
-          style={{
-            alignSelf: 'flex-end',
-          }}
-        >
-          Lorem ipsum dolor sit amet
+        <div className="row">
+          <div className="">
+            <CheckIcon />
+          </div>
+          <div
+            className="pl-2 "
+            style={{
+              alignSelf: 'flex-end',
+            }}
+          >
+            Lorem ipsum dolor sit amet
+          </div>
+        </div>
+        <div className="row">
+          <div className="">
+            <CheckIcon />
+          </div>
+          <div
+            className="pl-2 "
+            style={{
+              alignSelf: 'flex-end',
+            }}
+          >
+            Lorem ipsum dolor sit amet
+          </div>
         </div>
       </div>
-      <div className="row">
-        <div className="">
-          <CheckIcon />
+      <div className="c-infopage__promo">
+        <div className="d-flex justify-content-between c-infopage__promo-title">
+          <div className="">Includes Beyond+</div>
+          <div className="">$0/mo. (free)</div>
         </div>
-        <div
-          className="pl-2 "
-          style={{
-            alignSelf: 'flex-end',
-          }}
-        >
-          Lorem ipsum dolor sit amet
-        </div>
-      </div>
-      <div className="row">
-        <div className="">
-          <CheckIcon />
-        </div>
-        <div
-          className="pl-2 "
-          style={{
-            alignSelf: 'flex-end',
-          }}
-        >
-          Lorem ipsum dolor sit amet
-        </div>
+
+        <div> * Mobile App powered by our AI "Quorra"</div>
+        <div>* 24/7 VIP Support</div>
+        <div>* Total scooter repair or replacement, no questions asked</div>
+        <div>* Continuous Optimizations & Upgrades</div>
+        <div>* Cancel Anytime</div>
       </div>
     </div>
   );
