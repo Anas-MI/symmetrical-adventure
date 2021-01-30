@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="c-checkout row">
         <div className="c-checkout__left-side col-6">
           <InfoPage />

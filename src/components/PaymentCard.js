@@ -160,7 +160,7 @@ const PaymentCard = ({ config }) => {
                 <div className="col-1">CVC</div>
               </div>
               <div className="row c-card__card-represent-value">
-                <div className="col-7">Yvonne Günther</div>
+                <div className="col-7">{fullname}</div>
                 <div className="col-3">04/12</div>
                 <div className="col-1">***</div>
               </div>
