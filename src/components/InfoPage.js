@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import BK_1 from '../assets/img/BK_1.png';
+import img1 from '../assets/img/img1.jpg';
+import img2 from '../assets/img/img2.jpg';
+import img3 from '../assets/img/img3.jpg';
+import img4 from '../assets/img/img4.jpg';
+import img5 from '../assets/img/img5.jpg';
+import img6 from '../assets/img/img6.jpg';
+import img7 from '../assets/img/img7.jpg';
 import { CheckIcon } from '../assets/Icons/CustomIcons';
 import { Image } from 'antd';
 
 export default function InfoPage() {
   const [selectedImage, setSelectedImage] = useState(1);
   const infoImages = {
-    1: BK_1,
-    2: 'https://ridebeyond.com/wp-content/uploads/2020/10/BN_featureWide_01.png',
-    3: 'https://images-na.ssl-images-amazon.com/images/I/41oHEF7ORBL._SL1000_.jpg',
+    1: img1,
+    2: img2,
+    3: img3,
+    4: img4,
+    5: img5,
+    6: img6,
+    7: img7,
   };
 
   return (
@@ -24,24 +35,15 @@ export default function InfoPage() {
         />
       </div>
       <div className="c-infopage__image-selection-wrapper">
-        <div
-          className="c-infopage__image-selection-img"
-          onClick={() => setSelectedImage(1)}
-        >
-          <img src={infoImages[1]} alt="img" />
-        </div>
-        <div
-          className="c-infopage__image-selection-img"
-          onClick={() => setSelectedImage(2)}
-        >
-          <img src={infoImages[2]} alt="img" />
-        </div>
-        <div
-          className="c-infopage__image-selection-img"
-          onClick={() => setSelectedImage(3)}
-        >
-          <img src={infoImages[3]} alt="img" />
-        </div>
+        {Object.keys(infoImages).map((imgNo, index) => (
+          <div
+            key={index}
+            className="c-infopage__image-selection-img"
+            onClick={() => setSelectedImage(imgNo)}
+          >
+            <img src={infoImages[imgNo]} alt="img" />
+          </div>
+        ))}
       </div>
 
       <div className="c-infopage__description-title">Description</div>
