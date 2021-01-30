@@ -7,14 +7,98 @@ body {
   margin: auto 0 !important;
 }
 
+.c-input-num {
+  border: 2px solid #c3c6d1;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 5px;
+  span {
+    text-align: center;
+    padding: 0;
+  }
+  span:nth-child(1),
+  span:nth-child(3) {
+    color: #c3c6d1;
+    cursor: pointer;
+    font-size: 16px;
+  }
+}
+
+.c-input {
+  border: 2px solid #c3c6d1;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 5px;
+  width: 100%;
+  &:focus {
+    border: 2px solid black;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+}
+select.c-input {
+  color: $brand-gray;
+}
+
 #into-section {
   .section-row {
     height: 100vh;
   }
   .left-side {
-    background: #292A2E;
-    color: $primary-white;
-    height: 100%;
+    padding: 6% !important;
+
+    // background: #292A2E;
+    // color: $primary-white;
+    // height: 100%;
+    .c-card {
+      background: #ffffff;
+      box-shadow: 0px 10px 30px rgba(209, 213, 223, 0.5);
+      border-radius: 20px;
+      width: 550px;
+      margin-bottom: 30px;
+
+      &__title {
+        color: $brand-gray;
+        // font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+      }
+      .ant-card-head {
+        border: 0;
+      }
+      .ant-card-body {
+        padding: 0px;
+      }
+      &__list {
+        border-bottom: 1px solid #eeeff3;
+        padding: 10px 9px;
+        color: $brand-gray;
+        font-size: 14px;
+      }
+      &__item {
+        border-bottom: 1px solid #eeeff3;
+        padding: 18px 9px;
+        font-size: 16px;
+      }
+      &__footer {
+        padding: 18px 9px;
+
+        &-subtotal {
+          padding: 0px;
+          font-size: 12px;
+          color: $brand-gray;
+        }
+        &-items {
+          padding: 0px;
+          font-size: 12px;
+        }
+      }
+      &__input {
+        padding: 12px 9px;
+      }
+    }
   }
   .right-side {
     padding: 6% !important;
@@ -33,7 +117,8 @@ body {
           font-size: 18px;
           font-weight: 600;
           border-radius: 4px;
-          &:hover, &:focus {
+          &:hover,
+          &:focus {
             background: $apple-btn;
             color: $primary-white;
           }
@@ -54,7 +139,8 @@ body {
           padding: 8px 0 30px;
           font-size: 14px;
           border-radius: 4px;
-          &:hover, &:focus {
+          &:hover,
+          &:focus {
             background: $payment-btn;
             color: $primary-white;
           }
@@ -68,9 +154,11 @@ body {
       .ant-form-item {
         margin-bottom: 12px !important;
         .ant-form-item-control-input-content {
-          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 0px 2px 0 rgba(0, 0, 0, 0.01);
-          input, .ant-select-selector {
-            color: #A7A8AC;
+          box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1),
+            0 0px 2px 0 rgba(0, 0, 0, 0.01);
+          input,
+          .ant-select-selector {
+            color: #a7a8ac;
           }
           .ant-input-affix-wrapper {
             .ant-input {
@@ -91,18 +179,19 @@ body {
   width: 100%;
 }
 
-.ant-form-item-control-input-content input:hover, .ant-form-item-control-input-content input:focus {
+.ant-form-item-control-input-content input:hover,
+.ant-form-item-control-input-content input:focus {
   border: 1px solid #d9d9d9;
   outline: none;
 }
 
-.element{
+.element {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1), 0 0px 2px 0 rgba(0, 0, 0, 0.01);
   padding: 8px !important;
-  border: 1px solid #d9d9d9!important
+  border: 1px solid #d9d9d9 !important;
 }
 
-.ant-notification-notice-icon{
+.ant-notification-notice-icon {
   margin-top: 16px !important;
 }
 label.ant-form-item-required::before {
@@ -118,12 +207,12 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
 ::-webkit-input-placeholder {
-  color: #A7A8AC;
+  color: #a7a8ac;
 }
 
 .anticon {
@@ -139,7 +228,7 @@ input[type=number] {
 }
 
 .mobile-copyrights {
-  background: #292A2E;
+  background: #292a2e;
   padding: 16px 0;
 }
 
