@@ -17,6 +17,8 @@ const App = () => {
     loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97')
   );
   const [stripeResponse, setStripeResponse] = useState(null);
+  const [email, setEmail] = useState('');
+  const [zipcode, setZipcode] = useState('');
 
   const [config, setconfig] = useState({
     publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
@@ -56,10 +58,22 @@ const App = () => {
                 <div className="pb-3">
                   <div className="row c-card__input ">
                     <div className="col-6">
-                      <input className="c-input" placeholder="Email" />
+                      <input
+                        className="c-input"
+                        placeholder="Email"
+                        name="email"
+                        value={email.email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
                     </div>
                     <div className="col-6">
-                      <input className="c-input" placeholder="Zip Code" />
+                      <input
+                        name="zipcode"
+                        className="c-input"
+                        placeholder="Zip Code"
+                        value={zipcode}
+                        onChange={(e) => setZipcode(e.target.value)}
+                      />
                     </div>
                   </div>
                 </div>
@@ -68,6 +82,8 @@ const App = () => {
                 <PaymentCard
                   config={config}
                   setStripeResponse={setStripeResponse}
+                  email={email}
+                  zipcode={zipcode}
                 />
               </Elements>
             </>

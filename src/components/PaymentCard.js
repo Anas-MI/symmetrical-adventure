@@ -30,7 +30,8 @@ import { Card } from 'antd';
 import { Spin } from 'antd';
 const { Option } = Select;
 
-const PaymentCard = ({ config, setStripeResponse }) => {
+const PaymentCard = (props) => {
+  const { config, setStripeResponse, email } = props;
   const [loading, setloading] = useState(false);
   const [fullname, setFullname] = useState('');
 
@@ -59,6 +60,7 @@ const PaymentCard = ({ config, setStripeResponse }) => {
     // };
     const payload = {
       name: fullname,
+      email: email,
     };
     console.log(elements.getElement(CardNumberElement));
 
