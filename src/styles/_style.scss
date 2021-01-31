@@ -24,6 +24,16 @@ body {
     cursor: pointer;
     font-size: 16px;
   }
+
+  .cursor--disabled {
+    cursor: default;
+  }
+  &--disabled {
+    span:nth-child(1),
+    span:nth-child(3) {
+      cursor: default;
+    }
+  }
 }
 
 .c-input {
@@ -32,7 +42,7 @@ body {
   border: 2px solid #c3c6d1;
   box-sizing: border-box;
   border-radius: 10px;
-  padding: 5px;
+  padding: 8px 10px;
   width: 100%;
   &:focus {
     border: 2px solid black;
@@ -305,7 +315,7 @@ input[type='number'] {
 
         font-family: Montserrat;
         font-style: normal;
-        font-weight: bold;
+        font-weight: 700;
         font-size: 16px;
         line-height: 29px;
         text-align: center;
@@ -387,19 +397,51 @@ input[type='number'] {
       }
       &__footer {
         padding: 18px 9px;
-
+        text-align: right;
         &-subtotal {
           padding: 0px;
           font-size: 12px;
-          color: $brand-gray;
+          &-value {
+            color: $brand-gray;
+          }
         }
-        &-items {
+        &-total {
           padding: 0px;
+          font-weight: bold;
           font-size: 12px;
         }
       }
       &__input {
         padding: 12px 9px;
+      }
+    }
+    &-success {
+      padding: 13% 8%;
+      font-family: 'Montserrat';
+
+      &-title {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 29px;
+
+        color: #000000;
+        padding-bottom: 40px;
+      }
+      &-subtitle {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 29px;
+
+        color: #fd0000;
+      }
+      &-content {
+        font-weight: 400;
+        padding: 3px 0;
+        a {
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -455,7 +497,7 @@ input[type='number'] {
     border-radius: 5px;
     color: white;
     padding: 2rem 1rem;
-    margin: 2rem 0;
+    margin: 3rem 0;
     width: 80%;
     font-size: 13px;
     &-title {

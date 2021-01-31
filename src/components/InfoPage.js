@@ -15,11 +15,7 @@ export default function InfoPage() {
   const infoImages = {
     1: img1,
     2: img2,
-    3: img3,
-    4: img4,
-    5: img5,
-    6: img6,
-    7: img7,
+    3: img5,
   };
 
   return (

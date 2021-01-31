@@ -16,6 +16,7 @@ const App = () => {
   const [stripePromise, setstripePromise] = useState(
     loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97')
   );
+  const [stripeResponse, setStripeResponse] = useState(null);
 
   const [config, setconfig] = useState({
     publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
@@ -44,30 +45,48 @@ const App = () => {
           <InfoPage />
         </div>
         <div className="c-checkout__right-side  col-6">
-          <ShoppingCard />
-          <Card
-            title={<div className="c-card__title">Rider Info</div>}
-            bordered={false}
-            className="c-card border-0"
-          >
-            <div className="pb-3">
-              <div className="row c-card__input ">
-                <div className="col-6">
-                  <input className="c-input" placeholder="Email" />
+          {stripeResponse !== 'success' ? (
+            <>
+              <ShoppingCard />
+              <Card
+                title={<div className="c-card__title">Rider Info</div>}
+                bordered={false}
+                className="c-card border-0"
+              >
+                <div className="pb-3">
+                  <div className="row c-card__input ">
+                    <div className="col-6">
+                      <input className="c-input" placeholder="Email" />
+                    </div>
+                    <div className="col-6">
+                      <input className="c-input" placeholder="Zip Code" />
+                    </div>
+                  </div>
                 </div>
-                <div className="col-6">
-                  <input className="c-input" placeholder="Zip Code" />
-                </div>
+              </Card>
+              <Elements stripe={stripePromise}>
+                <PaymentCard
+                  config={config}
+                  setStripeResponse={setStripeResponse}
+                />
+              </Elements>
+            </>
+          ) : (
+            <div className="c-checkout__right-side-success">
+              <div className="c-checkout__right-side-success-title">
+                Your subscription has successfully processed!
+              </div>
+              <div className="c-checkout__right-side-success-subtitle">
+                What Next?
+              </div>
+              <div className="c-checkout__right-side-success-content">
+                1. Download the<a href="#app"> Beyond iPhone app</a>
+              </div>
+              <div className="c-checkout__right-side-success-content">
+                2. Check your email to begin your <a href="#on"> onboarding</a>
               </div>
             </div>
-          </Card>
-          <Elements stripe={stripePromise}>
-            <PaymentCard config={config} />
-          </Elements>
-          {/* 
-          <Elements stripe={stripePromise}>
-            <FormCard config={config} />
-          </Elements> */}
+          )}
         </div>
       </div>
     </React.Fragment>

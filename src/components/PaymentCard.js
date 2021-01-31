@@ -30,12 +30,14 @@ import { Card } from 'antd';
 import { Spin } from 'antd';
 const { Option } = Select;
 
-const PaymentCard = ({ config }) => {
+const PaymentCard = ({ config, setStripeResponse }) => {
   const [loading, setloading] = useState(false);
   const [fullname, setFullname] = useState('');
+
   const [state, setState] = useState({
     countryArray: [],
   });
+
   const cvcRef = useRef(null);
 
   const elements = useElements();
@@ -92,6 +94,7 @@ const PaymentCard = ({ config }) => {
           .then((res) => {
             setloading(false);
             console.log(res);
+            setStripeResponse('success');
           })
           .catch((err) => {
             setloading(false);
@@ -150,7 +153,7 @@ const PaymentCard = ({ config }) => {
               </div>
               <div className="row">
                 <div className="col-12 c-card__card-represent-number">
-                  4242 4242 4242 4242
+                  **** **** **** ****
                 </div>
               </div>
 
@@ -161,7 +164,7 @@ const PaymentCard = ({ config }) => {
               </div>
               <div className="row c-card__card-represent-value">
                 <div className="col-7">{fullname}</div>
-                <div className="col-3">04/12</div>
+                <div className="col-3">12/21</div>
                 <div className="col-1">***</div>
               </div>
             </div>

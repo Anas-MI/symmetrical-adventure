@@ -30,14 +30,24 @@ export default function ShoppingCard() {
         cost={1}
         quantity={quantity}
         setQuantity={setQuantity}
+        disabled={true}
       />
       <div className="row c-card__footer">
-        <div className="col-7"></div>
-        <div className="col-3">
-          <span className="c-card__footer-subtotal">subtotal </span>
-          <span className="c-card__footer-items">{quantity * 2} items</span>
+        <div className="col-6"></div>
+        <div className="col-3 c-card__footer-subtotal">subtotal</div>
+        <div className="col-3  c-card__footer-subtotal-value">
+          ${70 * quantity}/mo.
         </div>
-        <div className="col-2  text-right">${70 * quantity}/mo.</div>
+        <div className="col-6"></div>
+        <div className="col-3 c-card__footer-subtotal">Tax</div>
+        <div className="col-3  c-card__footer-subtotal-value">
+          ${3.21 * quantity}/mo.
+        </div>
+        <div className="col-6"></div>
+        <div className="col-3 c-card__footer-total">Total</div>
+        <div className="col-3  tc-card__footer-total">
+          ${(70 + 3.21) * quantity}/mo.
+        </div>
       </div>
     </Card>
   );
@@ -60,7 +70,11 @@ const ShoppingCardItem = (props) => {
       </div>
       <div className="col-5">{props.name}</div>
       <div className="col-3">
-        <InputNum value={props.quantity} setValue={props.setQuantity} />
+        <InputNum
+          value={props.quantity}
+          setValue={props.setQuantity}
+          disabled={props.disabled}
+        />
       </div>
       <div className="col-2 text-right">${props.cost}/mo.</div>
     </div>
@@ -68,14 +82,20 @@ const ShoppingCardItem = (props) => {
 };
 
 const InputNum = (props) => {
-  const { value, setValue } = props;
+  const { value, setValue, disabled } = props;
   return (
-    <div className="c-input-num row">
-      <span className="col-4" onClick={() => value > 1 && setValue(value - 1)}>
+    <div className={`c-input-num row ${disabled && ' c-input-num--disabled'}`}>
+      <span
+        className={`col-4 `}
+        onClick={() => !disabled && value > 1 && setValue(value - 1)}
+      >
         -
       </span>
       <span className="col-4">{value}</span>
-      <span className="col-4" onClick={() => setValue(value + 1)}>
+      <span
+        className={`col-4 `}
+        onClick={() => !disabled && setValue(value + 1)}
+      >
         +
       </span>
     </div>
