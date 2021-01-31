@@ -34,19 +34,19 @@ export default function ShoppingCard() {
       />
       <div className="row c-card__footer">
         <div className="col-6"></div>
-        <div className="col-3 c-card__footer-subtotal">subtotal</div>
+        <div className="col-3 c-card__footer-subtotal">Subtotal</div>
         <div className="col-3  c-card__footer-subtotal-value">
           ${70 * quantity}/mo.
         </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Tax</div>
         <div className="col-3  c-card__footer-subtotal-value">
-          ${3.21 * quantity}/mo.
+          ${(3.21 * quantity).toFixed(2)}/mo.
         </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-total">Total</div>
         <div className="col-3  tc-card__footer-total">
-          ${(70 + 3.21) * quantity}/mo.
+          ${((70 + 3.21) * quantity).toFixed(2)}/mo.
         </div>
       </div>
     </Card>
