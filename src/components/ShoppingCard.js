@@ -45,7 +45,7 @@ export default function ShoppingCard() {
         </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-total">Total</div>
-        <div className="col-3  c-card__footer-total">
+        <div className="col-3  c-card__footer-total-value">
           ${((70 + 3.21) * quantity).toFixed(2)}/mo.
         </div>
       </div>

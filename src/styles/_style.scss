@@ -399,14 +399,20 @@ input[type='number'] {
         padding: 18px 9px;
         text-align: right;
         &-subtotal {
-          padding: 0px;
+          padding: 2px 0px;
           font-size: 12px;
           &-value {
             color: $brand-gray;
+            font-size: 12px;
           }
         }
         &-total {
-          padding: 0px;
+          padding: 2px 0px;
+
+          font-weight: bold;
+          font-size: 12px;
+        }
+        &-total-value {
           font-weight: bold;
           font-size: 12px;
         }
