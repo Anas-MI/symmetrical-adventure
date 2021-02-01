@@ -127,7 +127,7 @@ const PaymentCard = (props) => {
       >
         {/* <Form onFinish={handleSubmit} layout="vertical"> */}
         <div className="row c-card-payment">
-          <div className="col-6">
+          <div className=" col-lg-6 col-xs-12">
             <CardNumberElement className="c-input" />
             <input
               name="name"
@@ -146,7 +146,7 @@ const PaymentCard = (props) => {
               </div>
             </div>
           </div>
-          <div className="col-6">
+          <div className=" col-lg-6 col-xs-12">
             <div className="c-card__card-represent">
               <div className="row">
                 <div className="col-12">

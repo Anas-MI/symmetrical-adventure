@@ -43,10 +43,10 @@ const App = () => {
     <React.Fragment>
       {/* <Navbar /> */}
       <div className="c-checkout row">
-        <div className="c-checkout__left-side col-6">
+        <div className="c-checkout__left-side col-md-6 col-xs-12">
           <InfoPage />
         </div>
-        <div className="c-checkout__right-side  col-6">
+        <div className="c-checkout__right-side   col-md-6 col-xs-12">
           {stripeResponse !== 'success' ? (
             <>
               <ShoppingCard />

@@ -45,7 +45,7 @@ export default function ShoppingCard() {
         </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-total">Total</div>
-        <div className="col-3  tc-card__footer-total">
+        <div className="col-3  c-card__footer-total">
           ${((70 + 3.21) * quantity).toFixed(2)}/mo.
         </div>
       </div>
@@ -91,7 +91,14 @@ const InputNum = (props) => {
       >
         -
       </span>
-      <span className="col-4">{value}</span>
+      <span
+        className="col-4"
+        style={{
+          alignSelf: 'center',
+        }}
+      >
+        {value}
+      </span>
       <span
         className={`col-4 `}
         onClick={() => !disabled && setValue(value + 1)}

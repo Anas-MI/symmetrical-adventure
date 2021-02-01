@@ -506,3 +506,74 @@ input[type='number'] {
     }
   }
 }
+
+//for tablets
+
+@media only screen and (max-width: 769px) {
+  .c-checkout {
+    padding: 2%;
+    &__left-side {
+      // border-right: 0;
+    }
+    &__right-side {
+      .c-card {
+        width: 100%;
+
+        &__item {
+          font-size: 12px;
+        }
+
+        .col,
+        .col-1,
+        .col-10,
+        .col-11,
+        .col-12,
+        .col-2,
+        .col-3,
+        .col-4,
+        .col-5,
+        .col-6,
+        .col-7,
+        .col-8,
+        .col-9 {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
+  .c-infopage {
+    &__title {
+      // margin: 2rem 0 1rem;
+    }
+    &__promo {
+      width: auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .c-checkout {
+    padding: 0;
+    &__left-side {
+      border-right: 0;
+    }
+    &__right-side {
+      .c-card {
+        width: 100%;
+
+        &__item {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .c-infopage {
+    &__title {
+      margin: 2rem 0 1rem;
+    }
+    &__promo {
+      width: auto;
+    }
+  }
+}
