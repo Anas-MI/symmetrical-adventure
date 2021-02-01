@@ -33,7 +33,9 @@ const { Option } = Select;
 const PaymentCard = (props) => {
   const { config, setStripeResponse, email } = props;
   const [loading, setloading] = useState(false);
-  const [fullname, setFullname] = useState('');
+
+  const [fName, setFName] = useState('');
+  const [lName, setLName] = useState('');
 
   const [state, setState] = useState({
     countryArray: [],
@@ -59,7 +61,7 @@ const PaymentCard = (props) => {
     //   name: values.name,
     // };
     const payload = {
-      name: fullname,
+      name: fName + lName,
       email: email,
     };
     console.log(elements.getElement(CardNumberElement));
@@ -72,7 +74,7 @@ const PaymentCard = (props) => {
           type: 'card',
           card: elements.getElement(CardNumberElement),
           billing_details: {
-            name: fullname,
+            name: fName + lName,
           },
         };
         const { customerID } = res.data;
@@ -129,13 +131,27 @@ const PaymentCard = (props) => {
         <div className="row c-card-payment">
           <div className=" col-lg-6 col-xs-12">
             <CardNumberElement className="c-input" />
-            <input
-              name="name"
-              className="c-input"
-              placeholder="Full Name"
-              value={fullname}
-              onChange={(e) => setFullname(e.target.value)}
-            />
+            <div className="row c-card-payment__exp">
+              <div className="col-6">
+                <input
+                  name="firstname"
+                  className="c-input"
+                  placeholder="First Name"
+                  value={fName}
+                  onChange={(e) => setFName(e.target.value)}
+                />
+              </div>
+
+              <div className="col-6 pr-0">
+                <input
+                  name="lastname"
+                  className="c-input"
+                  placeholder="Last Name"
+                  value={lName}
+                  onChange={(e) => setLName(e.target.value)}
+                />
+              </div>
+            </div>
             <div className="row c-card-payment__exp">
               <div className="col-6">
                 <CardExpiryElement className="c-input " />
@@ -165,7 +181,7 @@ const PaymentCard = (props) => {
                 <div className="col-1">CVC</div>
               </div>
               <div className="row c-card__card-represent-value">
-                <div className="col-7">{fullname}</div>
+                <div className="col-7">{fName + ' ' + lName}</div>
                 <div className="col-3">12/21</div>
                 <div className="col-1">***</div>
               </div>
@@ -175,9 +191,11 @@ const PaymentCard = (props) => {
 
         {/* </Form> */}
       </Card>
-      <button className="c-card__btn" onClick={handleSubmit} block>
-        Finish Order
-      </button>
+      <div className="c-card__btn-wrapper">
+        <button className="c-card__btn" onClick={handleSubmit} block>
+          Finish Order
+        </button>
+      </div>
     </Spin>
   );
 };

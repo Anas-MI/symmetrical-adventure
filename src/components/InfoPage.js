@@ -19,16 +19,11 @@ export default function InfoPage() {
   };
 
   return (
-    <div>
+    <div className="c-infopage-wrapper">
       <h2 className="c-infopage__title">SV1 Electric Scooter</h2>
       <div className="c-infopage__subtitle">$1 reservation fee + $69/mo.</div>
       <div className="c-infopage__image-wrapper">
-        <Image
-          src={infoImages[selectedImage]}
-          alt="asd"
-          width="100%"
-          height="400px"
-        />
+        <Image src={infoImages[selectedImage]} alt="asd" />
       </div>
       <div className="c-infopage__image-selection-wrapper">
         {Object.keys(infoImages).map((imgNo, index) => (

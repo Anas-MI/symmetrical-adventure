@@ -295,7 +295,7 @@ input[type='number'] {
       max-width: 600px;
       width: 110%;
 
-      margin: 0 auto 30px;
+      margin: 0 auto 30px 0;
       &-payment {
         padding-bottom: 1rem;
         .c-input {
@@ -330,7 +330,7 @@ input[type='number'] {
         background: linear-gradient(206.57deg, #517afb 0%, #5351fb 83.33%);
         box-shadow: 0px 5px 20px #c0c7d6;
         border-radius: 3px;
-        height: auto;
+        height: 165px;
         width: 100%;
         color: white;
         padding: 1rem;
@@ -353,7 +353,7 @@ input[type='number'] {
           padding-left: 5px;
         }
         &-number {
-          padding-bottom: 1rem;
+          padding-bottom: 1.5rem;
           padding-top: 1rem;
           letter-spacing: 1px;
           font-weight: bold;
@@ -481,6 +481,10 @@ input[type='number'] {
 
   &__image-wrapper {
     margin: auto;
+    img {
+      width: 460px;
+      height: 400px;
+    }
   }
   &__image-selection-wrapper {
   }
@@ -550,15 +554,24 @@ input[type='number'] {
     }
   }
   .c-infopage {
-    &__title {
-      // margin: 2rem 0 1rem;
-    }
-    &__promo {
-      width: auto;
+    // &__promo {
+    //   width: auto;
+    // }
+    &__image-wrapper {
+      img {
+        width: 100%;
+        height: 400px;
+      }
     }
   }
 }
 
+@media only screen and (min-width: 769px) {
+  .c-infopage-wrapper {
+    width: 530px;
+    float: right;
+  }
+}
 @media only screen and (max-width: 426px) {
   .c-checkout {
     padding: 0;
@@ -568,7 +581,14 @@ input[type='number'] {
     &__right-side {
       .c-card {
         width: 100%;
-
+        &__btn-wrapper {
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+        &__card-represent {
+          width: 90%;
+          margin: 1rem auto;
+        }
         &__item {
           font-size: 12px;
         }
@@ -579,8 +599,14 @@ input[type='number'] {
     &__title {
       margin: 2rem 0 1rem;
     }
-    &__promo {
-      width: auto;
+    // &__promo {
+    //   width: auto;
+    // }
+    &__image-wrapper {
+      img {
+        width: 100%;
+        height: 400px;
+      }
     }
   }
 }

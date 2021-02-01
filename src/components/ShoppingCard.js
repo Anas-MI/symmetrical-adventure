@@ -20,14 +20,14 @@ export default function ShoppingCard() {
       <ShoppingCardItem
         name={'SV1 Electric Scooter'}
         image={BK_1}
-        cost={69}
+        cost={1}
         quantity={quantity}
         setQuantity={setQuantity}
       />
       <ShoppingCardItem
         name={'Beyond +'}
         image={logo2}
-        cost={1}
+        cost={0}
         quantity={quantity}
         setQuantity={setQuantity}
         disabled={true}
@@ -36,17 +36,17 @@ export default function ShoppingCard() {
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Subtotal</div>
         <div className="col-3  c-card__footer-subtotal-value">
-          ${70 * quantity}/mo.
+          ${1 * quantity}/mo.
         </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Tax</div>
         <div className="col-3  c-card__footer-subtotal-value">
-          ${(3.21 * quantity).toFixed(2)}/mo.
+          ${(8.875 * quantity).toFixed(2)}/mo.
         </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-total">Total</div>
         <div className="col-3  c-card__footer-total-value">
-          ${((70 + 3.21) * quantity).toFixed(2)}/mo.
+          ${((1 + 8.875) * quantity).toFixed(2)}/mo.
         </div>
       </div>
     </Card>
