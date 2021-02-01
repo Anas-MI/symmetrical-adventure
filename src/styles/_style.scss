@@ -401,8 +401,9 @@ input[type='number'] {
         &-subtotal {
           padding: 2px 0px;
           font-size: 12px;
+          color: $brand-gray;
+
           &-value {
-            color: $brand-gray;
             font-size: 12px;
           }
         }
