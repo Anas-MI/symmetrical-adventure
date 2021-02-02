@@ -554,9 +554,9 @@ input[type='number'] {
     }
   }
   .c-infopage {
-    // &__promo {
-    //   width: auto;
-    // }
+    &__promo {
+      width: 100%;
+    }
     &__image-wrapper {
       img {
         width: 100%;
