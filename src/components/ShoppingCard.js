@@ -6,7 +6,7 @@ import logo2 from '../assets/img/logo2.png';
 export default function ShoppingCard() {
   const [quantity, setQuantity] = useState(1);
   const costSV1 = 1;
-  const taxSV1 = costSV1 * (8.875 / 100).toFixed(2);
+  const taxSV1 = costSV1 * (8.875 / 100);
   return (
     <Card
       title={<div className="c-card__title">Shopping Cart</div>}
@@ -38,17 +38,17 @@ export default function ShoppingCard() {
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Subtotal</div>
         <div className="col-3  c-card__footer-subtotal-value">
-          ${costSV1 * quantity}/mo.
+          ${(costSV1 * quantity).toFixed(2)}/mo.
         </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Tax</div>
         <div className="col-3  c-card__footer-subtotal-value">
-          ${taxSV1 * quantity}/mo.
+          ${(taxSV1 * quantity).toFixed(2)}/mo.
         </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-total">Total</div>
         <div className="col-3  c-card__footer-total-value">
-          ${(1 + taxSV1) * quantity}/mo.
+          ${((1 + taxSV1) * quantity).toFixed(2)}/mo.
         </div>
       </div>
     </Card>
