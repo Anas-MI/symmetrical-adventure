@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Card } from 'antd';
 import { ShoppingExtraIcon } from '../assets/Icons/CustomIcons';
-import BK_1 from '../assets/img/BK_1.png';
+import BK_1 from '../assets/img/img1.png';
 import logo2 from '../assets/img/logo2.png';
 export default function ShoppingCard() {
   const [quantity, setQuantity] = useState(1);
   const costSV1 = 1;
-  const taxSV1 = costSV1 * (8.875 / 100).toFixed(4);
+  const taxSV1 = costSV1 * (8.875 / 100).toFixed(2);
   return (
     <Card
       title={<div className="c-card__title">Shopping Cart</div>}

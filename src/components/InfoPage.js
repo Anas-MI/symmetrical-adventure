@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import BK_1 from '../assets/img/BK_1.png';
-import img1 from '../assets/img/img1.jpg';
-import img2 from '../assets/img/img2.jpg';
-import img3 from '../assets/img/img3.jpg';
-import img4 from '../assets/img/img4.jpg';
+// import BK_1 from '../assets/img/BK_1.png';
+import img1 from '../assets/img/img1.png';
+import img2 from '../assets/img/img2.png';
+// import img3 from '../assets/img/img3.jpg';
+// import img4 from '../assets/img/img4.jpg';
 import img5 from '../assets/img/img5.jpg';
-import img6 from '../assets/img/img6.jpg';
-import img7 from '../assets/img/img7.jpg';
+// import img6 from '../assets/img/img6.jpg';
+// import img7 from '../assets/img/img7.jpg';
 import { CheckIcon } from '../assets/Icons/CustomIcons';
 import { Image } from 'antd';
 
