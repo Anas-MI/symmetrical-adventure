@@ -11,7 +11,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Navbar from './components/Navbar';
 import { Card } from 'antd';
-
+import ReactCSSTransitionGroup from 'react-transition-group';
 const App = () => {
   const [stripePromise, setstripePromise] = useState(
     loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97')
@@ -19,7 +19,7 @@ const App = () => {
   const [stripeResponse, setStripeResponse] = useState(null);
   const [email, setEmail] = useState('');
   const [zipcode, setZipcode] = useState('');
-
+  const [showRight, setShowRight] = useState(false);
   const [config, setconfig] = useState({
     publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
     productID: '',
@@ -44,65 +44,68 @@ const App = () => {
       {/* <Navbar /> */}
       <div className="c-checkout row">
         <div className="c-checkout__left-side col-md-6 col-xs-12">
-          <InfoPage />
+          <InfoPage setShowRight={setShowRight} />
         </div>
-        <div className="c-checkout__right-side   col-md-6 col-xs-12">
-          {stripeResponse !== 'success' ? (
-            <>
-              <ShoppingCard />
-              <Card
-                title={<div className="c-card__title">Rider Info</div>}
-                bordered={false}
-                className="c-card border-0"
-              >
-                <div className="pb-3">
-                  <div className="row c-card__input ">
-                    <div className="col-6">
-                      <input
-                        className="c-input"
-                        placeholder="Email"
-                        name="email"
-                        value={email.email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
-                    <div className="col-6">
-                      <input
-                        name="zipcode"
-                        className="c-input"
-                        placeholder="Zip Code"
-                        value={zipcode}
-                        onChange={(e) => setZipcode(e.target.value)}
-                      />
+        <div className="c-checkout__right-side   col-md-6 col-xs-12 transit-wrapper">
+          {showRight ? (
+            stripeResponse !== 'success' ? (
+              <div className={'transit'}>
+                <ShoppingCard />
+                <Card
+                  title={<div className="c-card__title">Rider Info</div>}
+                  bordered={false}
+                  className="c-card border-0"
+                >
+                  <div className="pb-3">
+                    <div className="row c-card__input ">
+                      <div className="col-6">
+                        <input
+                          className="c-input"
+                          placeholder="Email"
+                          name="email"
+                          value={email.email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+                      <div className="col-6">
+                        <input
+                          name="zipcode"
+                          className="c-input"
+                          placeholder="Zip Code"
+                          value={zipcode}
+                          onChange={(e) => setZipcode(e.target.value)}
+                        />
+                      </div>
                     </div>
                   </div>
+                </Card>
+                <Elements stripe={stripePromise}>
+                  <PaymentCard
+                    config={config}
+                    setStripeResponse={setStripeResponse}
+                    email={email}
+                    zipcode={zipcode}
+                  />
+                </Elements>
+              </div>
+            ) : (
+              <div className="c-checkout__right-side-success transit">
+                <div className="c-checkout__right-side-success-title">
+                  Your subscription has successfully processed!
                 </div>
-              </Card>
-              <Elements stripe={stripePromise}>
-                <PaymentCard
-                  config={config}
-                  setStripeResponse={setStripeResponse}
-                  email={email}
-                  zipcode={zipcode}
-                />
-              </Elements>
-            </>
-          ) : (
-            <div className="c-checkout__right-side-success">
-              <div className="c-checkout__right-side-success-title">
-                Your subscription has successfully processed!
+                <div className="c-checkout__right-side-success-subtitle">
+                  What Next?
+                </div>
+                <div className="c-checkout__right-side-success-content">
+                  1. Download the<a href="#app"> Beyond iPhone app</a>
+                </div>
+                <div className="c-checkout__right-side-success-content">
+                  2. Check your email to begin your{' '}
+                  <a href="#on"> onboarding</a>
+                </div>
               </div>
-              <div className="c-checkout__right-side-success-subtitle">
-                What Next?
-              </div>
-              <div className="c-checkout__right-side-success-content">
-                1. Download the<a href="#app"> Beyond iPhone app</a>
-              </div>
-              <div className="c-checkout__right-side-success-content">
-                2. Check your email to begin your <a href="#on"> onboarding</a>
-              </div>
-            </div>
-          )}
+            )
+          ) : null}
         </div>
       </div>
     </React.Fragment>

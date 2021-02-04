@@ -34,8 +34,7 @@ const PaymentCard = (props) => {
   const { config, setStripeResponse, email } = props;
   const [loading, setloading] = useState(false);
 
-  const [fName, setFName] = useState('');
-  const [lName, setLName] = useState('');
+  const [fullName, setFullName] = useState('');
 
   const [state, setState] = useState({
     countryArray: [],
@@ -61,7 +60,7 @@ const PaymentCard = (props) => {
     //   name: values.name,
     // };
     const payload = {
-      name: fName + lName,
+      name: fullName,
       email: email,
     };
     console.log(elements.getElement(CardNumberElement));
@@ -74,7 +73,7 @@ const PaymentCard = (props) => {
           type: 'card',
           card: elements.getElement(CardNumberElement),
           billing_details: {
-            name: fName + lName,
+            name: fullName,
           },
         };
         const { customerID } = res.data;
@@ -132,23 +131,13 @@ const PaymentCard = (props) => {
           <div className=" col-lg-6 col-xs-12">
             <CardNumberElement className="c-input" />
             <div className="row c-card-payment__exp">
-              <div className="col-6">
+              <div className="col-12 p-0">
                 <input
-                  name="firstname"
+                  name="fullname"
                   className="c-input"
-                  placeholder="First Name"
-                  value={fName}
-                  onChange={(e) => setFName(e.target.value)}
-                />
-              </div>
-
-              <div className="col-6 pr-0">
-                <input
-                  name="lastname"
-                  className="c-input"
-                  placeholder="Last Name"
-                  value={lName}
-                  onChange={(e) => setLName(e.target.value)}
+                  placeholder="Full Name"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
                 />
               </div>
             </div>
@@ -181,7 +170,7 @@ const PaymentCard = (props) => {
                 <div className="col-1">CVC</div>
               </div>
               <div className="row c-card__card-represent-value">
-                <div className="col-7">{fName + ' ' + lName}</div>
+                <div className="col-7">{fullName}</div>
                 <div className="col-3">12/21</div>
                 <div className="col-1">***</div>
               </div>

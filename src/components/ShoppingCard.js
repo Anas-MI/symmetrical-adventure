@@ -3,6 +3,7 @@ import { Card } from 'antd';
 import { ShoppingExtraIcon } from '../assets/Icons/CustomIcons';
 import BK_1 from '../assets/img/img1.png';
 import logo2 from '../assets/img/logo2.png';
+import lock from '../assets/img/lock.png';
 export default function ShoppingCard() {
   const [quantity, setQuantity] = useState(1);
   const costSV1 = 1;
@@ -20,22 +21,30 @@ export default function ShoppingCard() {
         <div className="col-2 text-right">Price</div>
       </div>
       <ShoppingCardItem
-        name={'SV1 Electric Scooter'}
+        name={'Reserve Your Scooter (March Delivery)'}
         image={BK_1}
         cost={costSV1}
         quantity={quantity}
         setQuantity={setQuantity}
       />
       <ShoppingCardItem
-        name={'Beyond +'}
+        name={'Beyond Premium (free for 6 months)'}
         image={logo2}
         cost={0}
         quantity={quantity}
         setQuantity={setQuantity}
         disabled={true}
       />
+      <ShoppingCardItem
+        name={'GPS Tracker & Lock (free for new riders)'}
+        image={lock}
+        cost={0}
+        quantity={quantity}
+        setQuantity={setQuantity}
+        disabled={true}
+      />
       <div className="row c-card__footer">
-        <div className="col-6"></div>
+        {/* <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Subtotal</div>
         <div className="col-3  c-card__footer-subtotal-value">
           ${(costSV1 * quantity).toFixed(2)}/mo.
@@ -44,11 +53,18 @@ export default function ShoppingCard() {
         <div className="col-3 c-card__footer-subtotal">Tax</div>
         <div className="col-3  c-card__footer-subtotal-value">
           ${(taxSV1 * quantity).toFixed(2)}/mo.
-        </div>
+        </div> */}
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-total">Total</div>
         <div className="col-3  c-card__footer-total-value">
-          ${((1 + taxSV1) * quantity).toFixed(2)}/mo.
+          ${(1).toFixed(2)}
+        </div>
+        <div className="c-card__footer-terms col-12">
+          <em>
+            * Monhtly subscription of $59 will begin at time of pickup
+            <br />
+            ** Pickup available at Beyond HQ (368 Broadway, New York, NY 10013)
+          </em>
         </div>
       </div>
     </Card>
@@ -70,7 +86,7 @@ const ShoppingCardItem = (props) => {
           width={50}
         />
       </div>
-      <div className="col-5">{props.name}</div>
+      <div className="col-5 p-0">{props.name}</div>
       <div className="col-3">
         <InputNum
           value={props.quantity}
@@ -78,7 +94,10 @@ const ShoppingCardItem = (props) => {
           disabled={props.disabled}
         />
       </div>
-      <div className="col-2 text-right">${props.cost}/mo.</div>
+
+      <div className="col-2 text-right">
+        {props.cost === 0 ? 'free' : `$${props.cost.toFixed(2)}`}
+      </div>
     </div>
   );
 };
