@@ -508,8 +508,9 @@ input[type='number'] {
     }
     img {
       width: 470px;
-      height: 410px;
+      height: 380px;
       max-width: 100%;
+      // max-height: 100%;
     }
   }
   &__image-selection-wrapper {
@@ -634,7 +635,7 @@ input[type='number'] {
     max-width: 530px;
     width: 100%;
     float: right;
-    padding-right: 80px;
+    padding-right: 60px;
   }
 }
 @media only screen and (min-width: 427px) {
@@ -723,7 +724,7 @@ input[type='number'] {
       &__image-wrapper {
         img {
           width: 100%;
-          height: 340px;
+          height: 280px;
           max-width: 100%;
         }
       }

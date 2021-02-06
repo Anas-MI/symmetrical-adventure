@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import BK_1 from '../assets/img/BK_1.png';
 import img1 from '../assets/img/img1.png';
+import BK_1 from '../assets/img/BK_1.png';
 import img2 from '../assets/img/img2.png';
 // import img3 from '../assets/img/img3.jpg';
 // import img4 from '../assets/img/img4.jpg';
@@ -14,7 +15,7 @@ import { Image } from 'antd';
 export default function InfoPage({ setShowRight }) {
   const [selectedImage, setSelectedImage] = useState(1);
   const infoImages = {
-    1: img1,
+    1: BK_1,
     2: img2,
     3: img5,
   };
