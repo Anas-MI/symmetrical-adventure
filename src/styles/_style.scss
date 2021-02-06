@@ -289,6 +289,7 @@ input[type='number'] {
     border-right: 1px solid rgba(0, 0, 0, 0.3);
   }
   &__right-side {
+    // padding-top: 100px;
     .c-card {
       background: #ffffff;
       box-shadow: 0px 10px 30px rgba(209, 213, 223, 0.5);
@@ -526,7 +527,7 @@ input[type='number'] {
     color: white;
     padding: 2rem 1rem;
     margin: 2rem 0;
-    width: 80%;
+    width: 100%;
     font-size: 13px;
     &-title {
       font-size: 17px;
@@ -539,7 +540,7 @@ input[type='number'] {
     width: 100%;
 
     &__btn-wrapper {
-      text-align: center;
+      text-align: end;
       margin-bottom: 1rem;
     }
     &__btn {
@@ -570,6 +571,9 @@ input[type='number'] {
     &__right-side {
       .c-card {
         width: 100%;
+        svg {
+          width: 120px;
+        }
         &__card-represent {
           width: 80%;
 
@@ -617,17 +621,26 @@ input[type='number'] {
     max-width: 530px;
     width: 100%;
     float: right;
+    padding-right: 80px;
   }
 }
 @media only screen and (max-width: 426px) {
   .c-checkout {
     padding: 0;
+
     &__left-side {
       border-right: 0;
+      .c-card {
+        &__btn-wrapper {
+          text-align: center;
+        }
+      }
     }
     &__right-side {
+      padding-top: 20px;
       .c-card {
         width: 100%;
+
         &__btn-wrapper {
           text-align: center;
           margin-bottom: 1rem;
@@ -642,43 +655,47 @@ input[type='number'] {
       }
     }
   }
-  .c-infopage {
-    &__title {
-      margin: 2rem 0 1rem;
-    }
-    // &__promo {
-    //   width: auto;
-    // }
-    &__image-wrapper {
-      img {
-        width: 100%;
-        height: 340px;
-        max-width: 100%;
+  .c-infopage-wrapper {
+    .c-infopage {
+      &__title {
+        margin: 2rem 0 1rem;
+      }
+      // &__promo {
+      //   width: auto;
+      // }
+      &__image-wrapper {
+        img {
+          width: 100%;
+          height: 340px;
+          max-width: 100%;
+        }
       }
     }
   }
 }
 
-.transit-wrapper {
-  // transform: translateX(50%);
-}
-
+// .transit {
+//   transition: transform 2s ease-in-out;
+//   transform: translateX(0);
+//   transform: translateX(10px);
+// }
 .transit {
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 0.3s;
   -webkit-animation-name: slidein;
 
   /*for firefox*/
-  -moz-animation-duration: 0.5s;
+  -moz-animation-duration: 0.3s;
   -moz-animation-name: slidein;
 
   /* for opera*/
-  -o-animation-duration: 0.5s;
+  -o-animation-duration: 0.3s;
   -o-animation-name: slidein;
 
   /* Standard syntax*/
-  animation-duration: 0.5s;
+  animation-duration: 0.3s;
   animation-name: slidein;
 }
+
 @-webkit-keyframes slidein {
   from {
     margin-left: 100%;

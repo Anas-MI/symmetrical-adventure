@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card } from 'antd';
-import { ShoppingExtraIcon } from '../assets/Icons/CustomIcons';
+import { ShoppingExtraIcon, ShippingIcon2 } from '../assets/Icons/CustomIcons';
 import BK_1 from '../assets/img/img1.png';
 import logo2 from '../assets/img/logo2.png';
 import lock from '../assets/img/lock.png';
@@ -12,7 +12,7 @@ export default function ShoppingCard() {
     <Card
       title={<div className="c-card__title">Shopping Cart</div>}
       bordered={false}
-      // extra={<ShoppingExtraIcon />}
+      extra={<ShippingIcon2 />}
       className="c-card border-0"
     >
       <div className="row c-card__list">
@@ -57,7 +57,7 @@ export default function ShoppingCard() {
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-total">Total</div>
         <div className="col-3  c-card__footer-total-value">
-          ${(1).toFixed(2)}
+          ${(1 * quantity).toFixed(2)}
         </div>
         <div className="c-card__footer-terms col-12">
           <em>

@@ -59,6 +59,12 @@ const PaymentCard = (props) => {
     //   email: values.email,
     //   name: values.name,
     // };
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    setStripeResponse('success');
+
     const payload = {
       name: fullName,
       email: email,

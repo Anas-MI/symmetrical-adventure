@@ -125,13 +125,32 @@ export default function InfoPage({ setShowRight }) {
       </div>
 
       <div className="c-card__btn-wrapper">
-        <button
-          className="c-card__btn"
-          onClick={() => setShowRight(true)}
-          block
-        >
-          Reserve for $1
-        </button>
+        {/* c-checkout */}
+        <a href="#right-side">
+          <button
+            className="c-card__btn"
+            onClick={() => {
+              // window.scrollTo({
+              //   top: 0,
+              //   behavior: 'smooth',
+              // });
+
+              setTimeout(() => setShowRight(true), 350);
+
+              // setTimeout(
+              //   () =>
+              //     window.scrollBy({
+              //       top: 100,
+              //       behavior: 'smooth',
+              //     }),
+              //   600
+              // );
+            }}
+            block
+          >
+            Reserve for $1
+          </button>
+        </a>
       </div>
     </div>
   );
