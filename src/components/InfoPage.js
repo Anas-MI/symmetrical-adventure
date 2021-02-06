@@ -112,8 +112,8 @@ export default function InfoPage({ setShowRight }) {
           <div className="">(free for new riders)</div>
         </div>
         <div className="row">
-          <div className="col-3">
-            <img src={lock} alt="lock" width="100%" height="100%" />
+          <div className="col-3 p-0 m-auto">
+            <img src={lock} alt="lock" />
           </div>
           <div className="col-9">
             <div> – GPS tracking; easily find your scooter</div>

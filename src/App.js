@@ -84,7 +84,7 @@ const App = () => {
   const rightSide2 = (
     <div
       id="right-side-success"
-      className=" transit c-checkout__right-side-success "
+      className=" transit1 c-checkout__right-side-success "
     >
       <div className="c-checkout__right-side-success-title">
         Your subscription has successfully processed!
@@ -103,15 +103,21 @@ const App = () => {
     <React.Fragment>
       {/* <Navbar /> */}
       <div className="c-checkout row">
-        <div className="c-checkout__left-side col-md-6 col-xs-12">
+        <div className="c-checkout__left-side col-md-6 col-xs-12 ">
           <InfoPage setShowRight={setShowRight} />
         </div>
         <div
           className="c-checkout__right-side   col-md-6 col-xs-12 "
           id="right-side"
         >
-          {showRight && stripeResponse !== 'success' && rightSide1}
-          {showRight && stripeResponse === 'success' && rightSide2}
+          <div className="mobile-view">
+            {showRight && rightSide1}
+            {showRight && stripeResponse === 'success' && rightSide2}
+          </div>
+          <div className="web-view">
+            {showRight && stripeResponse !== 'success' && rightSide1}
+            {showRight && stripeResponse === 'success' && rightSide2}
+          </div>
         </div>
       </div>
     </React.Fragment>

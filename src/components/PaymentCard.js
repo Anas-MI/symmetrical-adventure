@@ -59,11 +59,8 @@ const PaymentCard = (props) => {
     //   email: values.email,
     //   name: values.name,
     // };
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-    setStripeResponse('success');
+
+    // setStripeResponse('success');
 
     const payload = {
       name: fullName,
@@ -187,9 +184,28 @@ const PaymentCard = (props) => {
         {/* </Form> */}
       </Card>
       <div className="c-card__btn-wrapper">
-        <button className="c-card__btn" onClick={handleSubmit} block>
+        <button
+          className="c-card__btn web-view"
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+            handleSubmit();
+          }}
+          block
+        >
           Finish Order
         </button>
+        <a href="#right-side-success">
+          <button
+            className="c-card__btn mobile-view m-auto"
+            onClick={handleSubmit}
+            block
+          >
+            Finish Order
+          </button>
+        </a>
       </div>
     </Spin>
   );

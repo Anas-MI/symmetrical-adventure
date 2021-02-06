@@ -2,6 +2,9 @@ body {
   font-family: 'Montserrat', sans-serif !important;
   font-family: 14px;
 }
+.mobile-view {
+  display: none;
+}
 
 .row {
   margin: auto 0 !important;
@@ -396,6 +399,10 @@ input[type='number'] {
         padding: 18px 9px;
         font-size: 12px;
         align-items: center;
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
       }
       &__footer {
         padding: 18px 9px;
@@ -436,6 +443,7 @@ input[type='number'] {
     &-success {
       padding: 13% 8%;
       font-family: 'Montserrat';
+      min-height: 60vh;
 
       &-title {
         font-style: normal;
@@ -533,6 +541,11 @@ input[type='number'] {
       font-size: 17px;
       padding-bottom: 10px;
     }
+    img {
+      width: 90%;
+      height: 80%;
+      // max-width: ;
+    }
   }
 }
 .c-infopage-wrapper {
@@ -624,7 +637,47 @@ input[type='number'] {
     padding-right: 80px;
   }
 }
+@media only screen and (min-width: 427px) {
+  .transit {
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: slidein;
+
+    /*for firefox*/
+    -moz-animation-duration: 0.5s;
+    -moz-animation-name: slidein;
+
+    /* for opera*/
+    -o-animation-duration: 0.5s;
+    -o-animation-name: slidein;
+
+    /* Standard syntax*/
+    animation-duration: 0.5s;
+    animation-name: slidein;
+  }
+  .transit1 {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-name: slidein;
+
+    /*for firefox*/
+    -moz-animation-duration: 1s;
+    -moz-animation-name: slidein;
+
+    /* for opera*/
+    -o-animation-duration: 1s;
+    -o-animation-name: slidein;
+
+    /* Standard syntax*/
+    animation-duration: 1s;
+    animation-name: slidein;
+  }
+}
 @media only screen and (max-width: 426px) {
+  .web-view {
+    display: none;
+  }
+  .mobile-view {
+    display: block;
+  }
   .c-checkout {
     padding: 0;
 
@@ -660,9 +713,13 @@ input[type='number'] {
       &__title {
         margin: 2rem 0 1rem;
       }
-      // &__promo {
-      //   width: auto;
-      // }
+      &__promo {
+        font-size: 12px;
+        &-title {
+          font-size: 15px;
+          padding-bottom: 15px;
+        }
+      }
       &__image-wrapper {
         img {
           width: 100%;
@@ -679,22 +736,6 @@ input[type='number'] {
 //   transform: translateX(0);
 //   transform: translateX(10px);
 // }
-.transit {
-  -webkit-animation-duration: 0.3s;
-  -webkit-animation-name: slidein;
-
-  /*for firefox*/
-  -moz-animation-duration: 0.3s;
-  -moz-animation-name: slidein;
-
-  /* for opera*/
-  -o-animation-duration: 0.3s;
-  -o-animation-name: slidein;
-
-  /* Standard syntax*/
-  animation-duration: 0.3s;
-  animation-name: slidein;
-}
 
 @-webkit-keyframes slidein {
   from {
