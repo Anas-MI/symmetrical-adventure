@@ -534,13 +534,13 @@ input[type='number'] {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     color: white;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
     margin: 2rem 0;
     width: 100%;
     font-size: 13px;
     &-title {
       font-size: 17px;
-      padding-bottom: 10px;
+      padding-bottom: 1.1rem;
     }
     img {
       width: 90%;
@@ -717,7 +717,7 @@ input[type='number'] {
       &__promo {
         font-size: 12px;
         &-title {
-          font-size: 15px;
+          font-size: 14px;
           padding-bottom: 15px;
         }
       }

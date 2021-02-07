@@ -12,7 +12,7 @@ import lock from '../assets/img/lock.png';
 import { CheckIcon } from '../assets/Icons/CustomIcons';
 import { Image } from 'antd';
 
-export default function InfoPage({ setShowRight }) {
+export default function InfoPage({ setShowRight, showRight }) {
   const [selectedImage, setSelectedImage] = useState(1);
   const infoImages = {
     1: BK_1,
@@ -125,34 +125,22 @@ export default function InfoPage({ setShowRight }) {
         </div>
       </div>
 
-      <div className="c-card__btn-wrapper">
-        {/* c-checkout */}
-        <a href="#right-side">
-          <button
-            className="c-card__btn"
-            onClick={() => {
-              // window.scrollTo({
-              //   top: 0,
-              //   behavior: 'smooth',
-              // });
-
-              setTimeout(() => setShowRight(true), 350);
-
-              // setTimeout(
-              //   () =>
-              //     window.scrollBy({
-              //       top: 100,
-              //       behavior: 'smooth',
-              //     }),
-              //   600
-              // );
-            }}
-            block
-          >
-            Reserve for $1
-          </button>
-        </a>
-      </div>
+      {!showRight && (
+        <div className="c-card__btn-wrapper">
+          {/* c-checkout */}
+          <a href="#right-side">
+            <button
+              className="c-card__btn"
+              onClick={() => {
+                setTimeout(() => setShowRight(true), 350);
+              }}
+              block
+            >
+              Reserve for $1
+            </button>
+          </a>
+        </div>
+      )}
     </div>
   );
 }

@@ -104,7 +104,7 @@ const App = () => {
       {/* <Navbar /> */}
       <div className="c-checkout row">
         <div className="c-checkout__left-side col-md-6 col-xs-12 ">
-          <InfoPage setShowRight={setShowRight} />
+          <InfoPage setShowRight={setShowRight} showRight={showRight} />
         </div>
         <div
           className="c-checkout__right-side   col-md-6 col-xs-12 "
