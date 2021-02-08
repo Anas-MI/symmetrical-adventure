@@ -44,7 +44,7 @@ export default function ShoppingCard() {
         disabled={true}
       />
       <div className="row c-card__footer">
-        {/* <div className="col-6"></div>
+        <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Subtotal</div>
         <div className="col-3  c-card__footer-subtotal-value">
           ${(costSV1 * quantity).toFixed(2)}/mo.
@@ -53,11 +53,11 @@ export default function ShoppingCard() {
         <div className="col-3 c-card__footer-subtotal">Tax</div>
         <div className="col-3  c-card__footer-subtotal-value">
           ${(taxSV1 * quantity).toFixed(2)}/mo.
-        </div> */}
+        </div>
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-total">Total</div>
         <div className="col-3  c-card__footer-total-value">
-          ${(1 * quantity).toFixed(2)}
+          ${((1 + 1 * taxSV1) * quantity).toFixed(2)}
         </div>
         <div className="c-card__footer-terms col-12">
           <em>
