@@ -518,6 +518,9 @@ input[type='number'] {
   &__image-selection-img {
     border: 1px solid #e4e4e4;
     display: inline-block;
+    &--active {
+      border: 1px solid #555;
+    }
     margin-right: 10px;
     cursor: pointer;
 
@@ -546,6 +549,9 @@ input[type='number'] {
       width: 90%;
       height: 80%;
       // max-width: ;
+      max-height: 85px;
+      max-width: 95px;
+      border-radius: 5px;
     }
   }
 }

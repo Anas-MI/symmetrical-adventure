@@ -34,10 +34,13 @@ export default function InfoPage({ setShowRight, showRight }) {
         {Object.keys(infoImages).map((imgNo, index) => (
           <div
             key={index}
-            className="c-infopage__image-selection-img"
+            className={`c-infopage__image-selection-img ${
+              imgNo === selectedImage &&
+              'c-infopage__image-selection-img--active'
+            }`}
             onClick={() => setSelectedImage(imgNo)}
           >
-            <img src={imgNo === 1 ? img1full : infoImages[imgNo]} alt="img" />
+            <img src={index === 0 ? img1full : infoImages[imgNo]} alt="img" />
           </div>
         ))}
       </div>
