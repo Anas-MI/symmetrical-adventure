@@ -34,7 +34,8 @@ const PaymentCard = (props) => {
   const { config, setStripeResponse, email } = props;
   const [loading, setloading] = useState(false);
 
-  const [fullName, setFullName] = useState('');
+  const [fName, setFName] = useState('');
+  const [lName, setLName] = useState('');
 
   const [state, setState] = useState({
     countryArray: [],
@@ -63,7 +64,7 @@ const PaymentCard = (props) => {
     // setStripeResponse('success');
 
     const payload = {
-      name: fullName,
+      name: fName + ' ' + lName,
       email: email,
     };
     console.log(elements.getElement(CardNumberElement));
@@ -76,7 +77,7 @@ const PaymentCard = (props) => {
           type: 'card',
           card: elements.getElement(CardNumberElement),
           billing_details: {
-            name: fullName,
+            name: fName + ' ' + lName,
           },
         };
         const { customerID } = res.data;
@@ -134,13 +135,22 @@ const PaymentCard = (props) => {
           <div className=" col-lg-6 col-xs-12">
             <CardNumberElement className="c-input" />
             <div className="row c-card-payment__exp">
-              <div className="col-12 p-0">
+              <div className="col-6 py-0">
                 <input
-                  name="fullname"
+                  name="fName"
                   className="c-input"
-                  placeholder="Full Name"
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  placeholder="First Name"
+                  value={fName}
+                  onChange={(e) => setFName(e.target.value)}
+                />
+              </div>
+              <div className="col-6 py-0">
+                <input
+                  name="lName"
+                  className="c-input"
+                  placeholder="Last Name"
+                  value={lName}
+                  onChange={(e) => setLName(e.target.value)}
                 />
               </div>
             </div>
@@ -173,7 +183,7 @@ const PaymentCard = (props) => {
                 <div className="col-1">CVC</div>
               </div>
               <div className="row c-card__card-represent-value">
-                <div className="col-7">{fullName}</div>
+                <div className="col-7">{fName + ' ' + lName}</div>
                 <div className="col-3">12/21</div>
                 <div className="col-1">***</div>
               </div>

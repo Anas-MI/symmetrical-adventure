@@ -6,6 +6,7 @@ import img2 from '../assets/img/img2.png';
 // import img3 from '../assets/img/img3.jpg';
 // import img4 from '../assets/img/img4.jpg';
 import img5 from '../assets/img/img5.jpg';
+import img1full from '../assets/img/img1Full.png';
 // import img6 from '../assets/img/img6.jpg';
 // import img7 from '../assets/img/img7.jpg';
 import lock from '../assets/img/lock.png';
@@ -36,7 +37,7 @@ export default function InfoPage({ setShowRight, showRight }) {
             className="c-infopage__image-selection-img"
             onClick={() => setSelectedImage(imgNo)}
           >
-            <img src={infoImages[imgNo]} alt="img" />
+            <img src={imgNo === 1 ? img1full : infoImages[imgNo]} alt="img" />
           </div>
         ))}
       </div>
