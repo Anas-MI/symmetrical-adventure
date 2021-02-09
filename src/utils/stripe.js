@@ -18,8 +18,8 @@ export const stripePromise = async () => {
 };
 
 
-export const handleSubmitPayment = async (paymentMethods, payload, config) => {
-  const { stripe, customerID } = payload
+export const handleSubmitPayment = async (paymentMethods, payload, config, cb) => {
+  const { stripe } = payload
   if (!config || !stripe) {
     return;
   }
@@ -27,13 +27,37 @@ export const handleSubmitPayment = async (paymentMethods, payload, config) => {
     const { error, paymentMethod } = await stripe.createPaymentMethod(paymentMethods);
     if (error || !paymentMethod) {
       notification.error({ message: error?.message || 'Something is not right...' })
+      cb()
       throw Error(error?.message || 'Something is not right...');
     }
     const paymentID = paymentMethod.id;
-    notification.success({ message: 'Payment successfull' })
-    return paymentID
+
+    api.post(`/stripe/customer`, { email: payload.email, name: payload.name })
+      .then(async function (res) {
+        const { id } = res.data.customer
+        const _finalpayload = {
+          customerID: id, paymentID, priceID: config.priceID
+        }
+        api.post(`/stripe/checkout`, _finalpayload)
+          .then(res => {
+            cb()
+            //const { clientSecret } = res.data
+          })
+          .catch(err => {
+            cb()
+            notification.error({ message: 'Something went wrong' });
+          })
+
+      }).catch(err => {
+        cb()
+        notification.error({
+          message: err.response.data && err.response.data.message
+            ? err.response.data.message
+            : 'Something went wrong'
+        });
+      })
+
   } catch (error) {
-    notification.error({ message: 'Something went wrong' })
     // message.error(error.message())
     // Let the user know that something went wrong here...
   }
