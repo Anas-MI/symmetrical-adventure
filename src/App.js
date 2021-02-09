@@ -1,94 +1,127 @@
-import React, { useEffect, useState } from 'react'
-import logo1 from './assets/img/logo1.png'
-import { ArrowLeftOutlined } from '@ant-design/icons'
-import FormCard from './components/formCard'
+import React, { useEffect, useState } from 'react';
+import logo1 from './assets/img/logo1.png';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import FormCard from './components/formCard';
+import ShoppingCard from './components/ShoppingCard';
+import PaymentCard from './components/PaymentCard';
+import DeliveryCard from './components/DeliveryCard';
+import InfoPage from './components/InfoPage';
 import { getAPIkeys } from './utils/stripe';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import Navbar from './components/Navbar';
+import { Card } from 'antd';
 
 const App = () => {
-
-  const [stripePromise, setstripePromise] = useState(loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97'));
-
+  const [stripePromise, setstripePromise] = useState(
+    loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97')
+  );
+  const [stripeResponse, setStripeResponse] = useState(null);
+  const [email, setEmail] = useState('');
+  const [zipcode, setZipcode] = useState('');
+  const [showRight, setShowRight] = useState(false);
   const [config, setconfig] = useState({
-    publishableKey: "pk_test_1XPhRvBHCislCDxFaYm3HR97",
-    productID: "",
-    priceID: "",
-    PreOrderPriceId: ""
+    publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
+    productID: '',
+    priceID: '',
+    PreOrderPriceId: '',
   });
 
   const getConfigKeys = async () => {
-    const result = await getAPIkeys()
+    const result = await getAPIkeys();
     if (result) {
-      setconfig(result)
-      setstripePromise(loadStripe(result.publishableKey))
+      setconfig(result);
+      setstripePromise(loadStripe(result.publishableKey));
     }
-  }
+  };
 
   useEffect(() => {
     getConfigKeys();
-  }, [])
+  }, []);
 
+  const rightSide1 = (
+    <div className={'transit'}>
+      <ShoppingCard />
+      <Card
+        title={<div className="c-card__title">Rider Info</div>}
+        bordered={false}
+        className="c-card border-0"
+      >
+        <div className="pb-3">
+          <div className="row c-card__input ">
+            <div className="col-6">
+              <input
+                className="c-input"
+                placeholder="Email"
+                name="email"
+                value={email.email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="col-6">
+              <input
+                name="zipcode"
+                className="c-input"
+                placeholder="Zip Code"
+                value={zipcode}
+                onChange={(e) => setZipcode(e.target.value)}
+              />
+            </div>
+          </div>
+        </div>
+      </Card>
+      <Elements stripe={stripePromise}>
+        <PaymentCard
+          config={config}
+          setStripeResponse={setStripeResponse}
+          email={email}
+          zipcode={zipcode}
+        />
+      </Elements>
+    </div>
+  );
+
+  const rightSide2 = (
+    <div
+      id="right-side-success"
+      className=" transit1 c-checkout__right-side-success "
+    >
+      <div className="c-checkout__right-side-success-title">
+        Your subscription has successfully processed!
+      </div>
+      <div className="c-checkout__right-side-success-subtitle">What Next?</div>
+      <div className="c-checkout__right-side-success-content">
+        1. Download the<a href="#app"> Beyond iPhone app</a>
+      </div>
+      <div className="c-checkout__right-side-success-content">
+        2. Check your email to begin your <a href="#on"> onboarding</a>
+      </div>
+    </div>
+  );
 
   return (
     <React.Fragment>
-      <section id="into-section">
-        <div className="row section-row">
-          <div className="col-lg-6 left-side">
-            <div className="d-flex justify-content-around align-items-center h-100 flex-column">
-              <div className="d-flex flex-column">
-                <div className="d-flex justify-content-center align-items-center">
-                  <ArrowLeftOutlined style={{ color: '#A7A8AC' }} />
-                  <img src={logo1} width="30" alt="logo" style={{ margin: '0 16px' }} />
-                  <p className="text-uppercase fw-bold m-0"
-                    style={{ fontSize: '10px', fontWeight: '600', color: '#8D5719', borderRadius: '4px', background: '#F8E09C', padding: '3px 9px' }}>
-                    Test mode
-                  </p>
-                </div>
-                <div className="mt-4" style={{ marginLeft: '60px' }}>
-                  <h6 style={{ color: '#A7A8AC' }}>Scooter reservation</h6>
-                  <h1 style={{ color: '#fff', fontWeight: '600' }}>$1.00</h1>
-                </div>
-              </div>
-
-              <div className="justify-content-center align-items-center w-100 copyrights">
-                <p style={{ color: '#626367', fontSize: '12px' }}>
-                  Powered by
-                  <span style={{ fontWeight: '600' }}>
-                    stripe
-                  </span>
-                </p>
-                <p style={{ color: '#626367' }} className="ml-2 mr-2">|</p>
-                <p style={{ color: '#626367', fontSize: '12px' }}>Terms Privacy</p>
-              </div>
-            </div>
+      {/* <Navbar /> */}
+      <div className="c-checkout row">
+        <div className="c-checkout__left-side col-md-6 col-xs-12 ">
+          <InfoPage setShowRight={setShowRight} showRight={showRight} />
+        </div>
+        <div
+          className="c-checkout__right-side   col-md-6 col-xs-12 "
+          id="right-side"
+        >
+          <div className="mobile-view">
+            {showRight && rightSide1}
+            {showRight && stripeResponse === 'success' && rightSide2}
           </div>
-
-          <div className="col-lg-6 right-side">
-            <div className="d-flex align-items-center h-100 right-side-section">
-              {console.log(config)}
-              <Elements stripe={stripePromise}>
-                <FormCard config={config} />
-              </Elements>
-            </div>
+          <div className="web-view">
+            {showRight && stripeResponse !== 'success' && rightSide1}
+            {showRight && stripeResponse === 'success' && rightSide2}
           </div>
         </div>
-
-        <div className="row mobile-copyrights">
-          <div className="d-flex justify-content-center align-items-center w-100">
-            <p style={{ color: '#626367', fontSize: '12px' }}>
-              Powered by
-              <span style={{ fontWeight: '600' }}>
-                stripe
-              </span>
-            </p>
-            <p style={{ color: '#626367' }} className="ml-2 mr-2">|</p>
-            <p style={{ color: '#626367', fontSize: '12px' }}>Terms Privacy</p>
-          </div>
-        </div>
-      </section>
+      </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default App;
