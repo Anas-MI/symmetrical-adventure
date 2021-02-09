@@ -41,6 +41,7 @@ export const handleSubmitPayment = async (paymentMethods, payload, config, cb) =
         api.post(`/stripe/checkout`, _finalpayload)
           .then(res => {
             cb()
+            notification.success({ message: 'Payment successfull.' })
             //const { clientSecret } = res.data
           })
           .catch(err => {
