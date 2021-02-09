@@ -18,7 +18,7 @@ export const stripePromise = async () => {
 };
 
 
-export const handleSubmitPayment = async (paymentMethods, payload, config, cb) => {
+export const handleSubmitPayment = async (paymentMethods, payload, config, cb, onSuccess) => {
   const { stripe } = payload
   if (!config || !stripe) {
     return;
@@ -42,6 +42,7 @@ export const handleSubmitPayment = async (paymentMethods, payload, config, cb) =
           .then(res => {
             cb()
             notification.success({ message: 'Payment successfull.' })
+            onSuccess()
             //const { clientSecret } = res.data
           })
           .catch(err => {

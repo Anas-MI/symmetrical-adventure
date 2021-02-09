@@ -81,7 +81,12 @@ const PaymentCard = (props) => {
       _paymentMethod,
       payload,
       config,
-      () => setloading(false)
+      () =>  setloading(false),
+      () => {
+        setStripeResponse('success');
+        setloading(false)
+      }
+
     )
   };
 
