@@ -9,6 +9,11 @@ import img5 from '../assets/img/img5.jpg';
 import img1full from '../assets/img/img1Full.png';
 // import img6 from '../assets/img/img6.jpg';
 // import img7 from '../assets/img/img7.jpg';
+
+import image1 from '../assets/img/image1.png';
+import image2 from '../assets/img/image2.png';
+import image3 from '../assets/img/image3.png';
+
 import lock from '../assets/img/lock.png';
 import { CheckIcon } from '../assets/Icons/CustomIcons';
 import { Image } from 'antd';
@@ -16,7 +21,12 @@ import { Image } from 'antd';
 export default function InfoPage({ setShowRight, showRight }) {
   const [selectedImage, setSelectedImage] = useState(1);
   const infoImages = {
-    1: BK_1,
+    1: image1,
+    2: image2,
+    3: img5,
+  };
+  const infoImagesTab = {
+    1: img1full,
     2: img2,
     3: img5,
   };
@@ -40,7 +50,7 @@ export default function InfoPage({ setShowRight, showRight }) {
             }`}
             onClick={() => setSelectedImage(imgNo)}
           >
-            <img src={index === 0 ? img1full : infoImages[imgNo]} alt="img" />
+            <img src={infoImagesTab[imgNo]} alt="img" />
           </div>
         ))}
       </div>
