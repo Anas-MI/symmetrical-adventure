@@ -507,8 +507,8 @@ input[type='number'] {
       max-width: 100%;
     }
     img {
-      width: 470px;
-      height: 380px;
+      width: 450px;
+      height: 450px;
       max-width: 100%;
       // max-height: 100%;
     }
@@ -630,7 +630,7 @@ input[type='number'] {
     &__image-wrapper {
       img {
         width: 100%;
-        height: 300px;
+        height: auto;
       }
     }
   }
@@ -730,7 +730,7 @@ input[type='number'] {
       &__image-wrapper {
         img {
           width: 100%;
-          height: 280px;
+          height: auto;
           max-width: 100%;
         }
       }
