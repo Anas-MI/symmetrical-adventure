@@ -66,60 +66,28 @@ const PaymentCard = (props) => {
     const payload = {
       name: fName + ' ' + lName,
       email: email,
+      stripe: stripe
     };
-    console.log(elements.getElement(CardNumberElement));
 
-    setloading(true);
-    api
-      .post(`/stripe/customer`, payload)
-      .then(async function (res) {
-        const _paymentMethod = {
-          type: 'card',
-          card: elements.getElement(CardNumberElement),
-          billing_details: {
-            name: fName + ' ' + lName,
-          },
-        };
-        const { customerID } = res.data;
-        const _payload = {
-          customerID: customerID,
-          stripe: stripe,
-        };
-        const paymentID = await handleSubmitPayment(
-          _paymentMethod,
-          _payload,
-          config
-        );
+    const _paymentMethod = {
+      type: 'card',
+      card: elements.getElement(CardNumberElement),
+      billing_details: {
+        name: fName + ' ' + lName,
+      }
+    }
+    setloading(true)
+    handleSubmitPayment(
+      _paymentMethod,
+      payload,
+      config,
+      () =>  setloading(false),
+      () => {
+        setStripeResponse('success');
+        setloading(false)
+      }
 
-        const _finalpayload = {
-          customerID,
-          paymentID,
-        };
-
-        api
-          .post(`/stripe/subscription`, _finalpayload)
-          .then((res) => {
-            setloading(false);
-            console.log(res);
-            setStripeResponse('success');
-          })
-          .catch((err) => {
-            setloading(false);
-            notification.error({ message: 'Something went wrong' });
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        // console.log(err.response.data.message)
-        setloading(false);
-        notification.error({
-          message:
-            err.response.data && err.response.data.message
-              ? err.response.data.message
-              : 'Something went wrong',
-        });
-        console.log(err);
-      });
+    )
   };
 
   return (

@@ -50,60 +50,28 @@ const FormCard = ({ config }) => {
     const payload = {
       email: values.email,
       name: values.name,
-    };
-    setloading(true);
-    api
-      .post(`/stripe/customer`, payload)
-      .then(async function (res) {
-        const _paymentMethod = {
-          type: 'card',
-          card: elements.getElement(CardNumberElement),
-          billing_details: {
-            name: values.name,
-          },
-        };
-        const { customerID } = res.data;
-        const _payload = {
-          customerID: customerID,
-          stripe: stripe,
-        };
-        const paymentID = await handleSubmitPayment(
-          _paymentMethod,
-          _payload,
-          config
-        );
+      stripe: stripe
+    }
+    const _paymentMethod = {
+      type: 'card',
+      card: elements.getElement(CardNumberElement),
+      billing_details: {
+        name: values.name,
+      }
+    }
+    setloading(true)
+    handleSubmitPayment(
+      _paymentMethod,
+      payload,
+      config,
+      () => setloading(false)
+    )
 
-        const _finalpayload = {
-          customerID,
-          paymentID,
-        };
+  }
 
-        api
-          .post(`/stripe/subscription`, _finalpayload)
-          .then((res) => {
-            setloading(false);
-            console.log(res);
-          })
-          .catch((err) => {
-            setloading(false);
-            notification.error({ message: 'Something went wrong' });
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        // console.log(err.response.data.message)
-        setloading(false);
-        notification.error({
-          message:
-            err.response.data && err.response.data.message
-              ? err.response.data.message
-              : 'Something went wrong',
-        });
-        console.log(err);
-      });
-  };
-
-  const cardSuffix = <img src={payment} width="110" alt="payment" />;
+  const cardSuffix = (
+    <img src={payment} width="110" alt="payment" />
+  )
 
   const cvcSuffix = (
     <img src={cvc} width="22px" style={{ marginRight: '-8px' }} alt="cvc" />
