@@ -22,8 +22,8 @@ const App = () => {
   const [showRight, setShowRight] = useState(false);
   const [config, setconfig] = useState({
     publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
-    productID: '',
-    priceID: '',
+    productId: '',
+    priceId: '',
     PreOrderPriceId: '',
   });
 
