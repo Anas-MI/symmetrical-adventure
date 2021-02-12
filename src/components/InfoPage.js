@@ -144,9 +144,19 @@ export default function InfoPage({ setShowRight, showRight }) {
           {/* c-checkout */}
           <a href="#right-side">
             <button
-              className="c-card__btn"
+              className="c-card__btn web-view"
               onClick={() => {
                 setTimeout(() => setShowRight(true), 350);
+              }}
+              block
+            >
+              Reserve for $1
+            </button>
+            <button
+              className="c-card__btn mobile-view"
+              onClick={() => {
+                // setTimeout(() => setShowRight(true), 350);
+                setShowRight(true);
               }}
               block
             >

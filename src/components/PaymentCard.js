@@ -66,7 +66,7 @@ const PaymentCard = (props) => {
     const payload = {
       name: fName + ' ' + lName,
       email: email,
-      stripe: stripe
+      stripe: stripe,
     };
 
     const _paymentMethod = {
@@ -74,20 +74,19 @@ const PaymentCard = (props) => {
       card: elements.getElement(CardNumberElement),
       billing_details: {
         name: fName + ' ' + lName,
-      }
-    }
-    setloading(true)
+      },
+    };
+    setloading(true);
     handleSubmitPayment(
       _paymentMethod,
       payload,
       config,
-      () =>  setloading(false),
+      () => setloading(false),
       () => {
         setStripeResponse('success');
-        setloading(false)
+        setloading(false);
       }
-
-    )
+    );
   };
 
   return (
@@ -128,7 +127,6 @@ const PaymentCard = (props) => {
               </div>
               <div className="col-6">
                 <CardCvcElement className="c-input " ref={cvcRef} />
-                {console.log('cvcRef', cvcRef)}
               </div>
             </div>
           </div>

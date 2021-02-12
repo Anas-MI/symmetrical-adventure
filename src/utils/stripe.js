@@ -40,37 +40,69 @@ export const handleSubmitPayment = async (
     }
     const paymentId = paymentMethod.id;
 
-    api
-      .post(`/stripe/customer`, { email: payload.email, name: payload.name })
-      .then(async function (res) {
-        const { id } = res.data.customer;
-        const _finalpayload = {
-          customerId: id,
-          paymentId,
-          priceId: config.priceId,
-        };
-        api
-          .post(`/stripe/checkout`, _finalpayload)
-          .then((res) => {
-            cb();
-            notification.success({ message: 'Payment successfull.' });
-            onSuccess();
-            //const { clientSecret } = res.data
-          })
-          .catch((err) => {
-            cb();
-            notification.error({ message: 'Something went wrong' });
+    //gettoing users
+    let beyond_users = JSON.parse(localStorage.getItem('beyond_users'));
+    const alreadyUsers = payload.email.filter(
+      (item) => item.email === payload.email
+    );
+    console.log('asd', alreadyUsers);
+    if (alreadyUsers.length === 0) {
+      api
+        .post(`/stripe/customer`, { email: payload.email, name: payload.name })
+        .then(async function (res) {
+          const { id } = res.data.customer;
+          const _finalpayload = {
+            customerId: id,
+            paymentId,
+            priceId: config.priceId,
+          };
+          console.log('email', res, { email: payload.email, customerId: id });
+
+          beyond_users.push({ email: payload.email, customerId: id });
+          localStorage.setItem('beyond_users', JSON.stringify(beyond_users));
+
+          api
+            .post(`/stripe/checkout`, _finalpayload)
+            .then((res) => {
+              cb();
+              notification.success({ message: 'Payment successfull.' });
+              onSuccess();
+              //const { clientSecret } = res.data
+            })
+            .catch((err) => {
+              cb();
+              notification.error({ message: 'Something went wrong' });
+            });
+        })
+        .catch((err) => {
+          cb();
+          notification.error({
+            message:
+              err.response.data && err.response.data.message
+                ? err.response.data.message
+                : 'Something went wrong',
           });
-      })
-      .catch((err) => {
-        cb();
-        notification.error({
-          message:
-            err.response.data && err.response.data.message
-              ? err.response.data.message
-              : 'Something went wrong',
         });
-      });
+    } else {
+      const _finalpayload = {
+        customerId: alreadyUsers[0].customerId,
+        paymentId,
+        priceId: config.priceId,
+      };
+
+      api
+        .post(`/stripe/checkout`, _finalpayload)
+        .then((res) => {
+          cb();
+          notification.success({ message: 'Payment successfull.' });
+          onSuccess();
+          //const { clientSecret } = res.data
+        })
+        .catch((err) => {
+          cb();
+          notification.error({ message: 'Something went wrong' });
+        });
+    }
   } catch (error) {
     // message.error(error.message())
     // Let the user know that something went wrong here...
