@@ -35,7 +35,28 @@ export default function InfoPage({ setShowRight, showRight }) {
     <div className="c-infopage-wrapper">
       <h2 className="c-infopage__title">SV1 Electric Scooter</h2>
       <div className="c-infopage__subtitle font-weight-bold">
-        $59/mo.<span> (reserve now for only $1)</span>
+        $59/mo.{' '}
+        <a href="#right-side">
+          <span
+            className=" web-view"
+            onClick={() => {
+              setTimeout(() => setShowRight(true), 350);
+            }}
+            block
+          >
+            (reserve now for only $1)
+          </span>
+          <span
+            className="mobile-view"
+            onClick={() => {
+              // setTimeout(() => setShowRight(true), 350);
+              setShowRight(true);
+            }}
+            block
+          >
+            (reserve now for only $1)
+          </span>
+        </a>
       </div>
       <div className="c-infopage__image-wrapper">
         <Image src={infoImages[selectedImage]} alt="asd" />
