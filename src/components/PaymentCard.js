@@ -83,6 +83,10 @@ const PaymentCard = (props) => {
       config,
       () => setloading(false),
       () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
         setStripeResponse('success');
         setloading(false);
       }
@@ -163,10 +167,6 @@ const PaymentCard = (props) => {
         <button
           className="c-card__btn web-view"
           onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
             handleSubmit();
           }}
           block
