@@ -42,21 +42,25 @@ export const handleSubmitPayment = async (
 
     //gettoing users
     let beyond_users = JSON.parse(localStorage.getItem('beyond_users'));
-    const alreadyUsers = payload.email.filter(
-      (item) => item.email === payload.email
-    );
-    console.log('asd', alreadyUsers);
-    if (alreadyUsers.length === 0) {
+    let alreadyUsers = [];
+    if (beyond_users) {
+      alreadyUsers = beyond_users.filter(
+        (item) => item.email === payload.email
+      );
+    } else {
+      beyond_users = []
+    }
+
+    if (alreadyUsers.length === 0 || beyond_users.length == 0) {
       api
         .post(`/stripe/customer`, { email: payload.email, name: payload.name })
         .then(async function (res) {
-          const { id } = res.data.customer;
+          const id = res.data.customerId;
           const _finalpayload = {
             customerId: id,
             paymentId,
             priceId: config.priceId,
           };
-          console.log('email', res, { email: payload.email, customerId: id });
 
           beyond_users.push({ email: payload.email, customerId: id });
           localStorage.setItem('beyond_users', JSON.stringify(beyond_users));
@@ -78,7 +82,7 @@ export const handleSubmitPayment = async (
           cb();
           notification.error({
             message:
-              err.response.data && err.response.data.message
+              err.response && err.response.data && err.response.data.message
                 ? err.response.data.message
                 : 'Something went wrong',
           });
@@ -104,6 +108,7 @@ export const handleSubmitPayment = async (
         });
     }
   } catch (error) {
+    console.log(error)
     // message.error(error.message())
     // Let the user know that something went wrong here...
   }
