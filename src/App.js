@@ -91,7 +91,7 @@ const App = () => {
       </div>
       <div className="c-checkout__right-side-success-subtitle">What Next?</div>
       <div className="c-checkout__right-side-success-content">
-        1. Download the<a href="#app"> Beyond iPhone app</a>
+        1. Download the<a href="https://apps.apple.com/app/id1543945606"> Beyond iPhone app</a>
       </div>
       <div className="c-checkout__right-side-success-content">
         2. Check your email to begin your <a href="#on"> onboarding</a>
