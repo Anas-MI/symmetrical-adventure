@@ -59,7 +59,8 @@ export const handleSubmitPayment = async (
           const _finalpayload = {
             customerId: id,
             paymentId,
-            priceId: config.priceId,
+           // preOrderPriceId: config.preOrderPriceId,
+            priceId: config.preOrderPriceId,
           };
 
           beyond_users.push({ email: payload.email, customerId: id });
@@ -91,16 +92,18 @@ export const handleSubmitPayment = async (
       const _finalpayload = {
         customerId: alreadyUsers[0].customerId,
         paymentId,
-        priceId: config.priceId,
+        priceId: config.preOrderPriceId,
+       // preOrderPriceId: config.preOrderPriceId,
       };
 
       api
         .post(`/stripe/checkout`, _finalpayload)
         .then((res) => {
+          console.log(res)
           cb();
           notification.success({ message: 'Payment successfull.' });
           onSuccess();
-          //const { clientSecret } = res.data
+          const { clientSecret } = res.data.data
         })
         .catch((err) => {
           cb();

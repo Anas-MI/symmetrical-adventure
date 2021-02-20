@@ -24,8 +24,10 @@ const App = () => {
     publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
     productId: '',
     priceId: '',
-    PreOrderPriceId: '',
+    preOrderPriceId: '',
   });
+
+  console.log(config, '_____________--')
 
   const getConfigKeys = async () => {
     const result = await getAPIkeys();
