@@ -94,7 +94,7 @@ const App = () => {
         1. Download the<a href="https://apps.apple.com/app/id1543945606"> Beyond iPhone app</a>
       </div>
       <div className="c-checkout__right-side-success-content">
-        2. Check your email to begin your <a href="#on"> onboarding</a>
+        2. Check your email to begin your <a href="https://help.ridebeyond.com/en/articles/4576251-quick-start-guide-sv1-electric-scooter"> onboarding</a>
       </div>
     </div>
   );
