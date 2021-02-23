@@ -54,8 +54,73 @@ body {
     outline: none;
   }
 }
+
 select.c-input {
   color: $brand-gray;
+}
+
+.checkbox {
+  width: 100%;
+  // margin: 15px auto;
+  position: relative;
+  display: block;
+  label {
+    position: relative;
+    min-height: 34px;
+    display: block;
+    padding-left: 40px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+    span {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 4px;
+      width: 22px;
+      height: 22px;
+      transition: transform 0.28s ease;
+      border-radius: 3px;
+      border: 2px solid $input-gray;
+    }
+    &:after {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 5px;
+      border-bottom: 2px solid $color-green;
+      border-left: 2px solid $color-green;
+      transform: rotate(-45deg) scale(0);
+      transition: transform ease 0.25s;
+      position: absolute;
+      top: 12px;
+      left: 10px;
+    }
+  }
+  input[type='checkbox'] {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0;
+    margin-left: -20px;
+    &:checked ~ label {
+      &:before {
+        border: 2px solid $input-gray;
+      }
+      &:after {
+        transform: rotate(-45deg) scale(1);
+      }
+    }
+    &:focus + label::before {
+      outline: 0;
+    }
+  }
 }
 
 // #into-section {
@@ -484,7 +549,7 @@ input[type='number'] {
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
-    padding-bottom: 20px;
+    padding-bottom: 1px;
     span {
       color: red;
     }
@@ -541,9 +606,19 @@ input[type='number'] {
     margin: 2rem 0;
     width: 100%;
     font-size: 13px;
+    &-point {
+      color: #d7bcfe;
+    }
     &-title {
       font-size: 17px;
       padding-bottom: 1.1rem;
+      &-right {
+        text-align: end;
+        font-size: 12px;
+        span {
+          font-weight: 500;
+        }
+      }
     }
     img {
       width: 90%;

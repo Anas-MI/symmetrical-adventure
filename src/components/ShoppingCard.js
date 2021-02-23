@@ -4,6 +4,7 @@ import { ShoppingExtraIcon, ShippingIcon2 } from '../assets/Icons/CustomIcons';
 import BK_1 from '../assets/img/img1.png';
 import logo2 from '../assets/img/logo2.png';
 import lock from '../assets/img/lock.png';
+import CreditCard from '../assets/img/CreditCard.png';
 export default function ShoppingCard() {
   const [quantity, setQuantity] = useState(1);
   const costSV1 = 1;
@@ -21,28 +22,34 @@ export default function ShoppingCard() {
         <div className="col-2 text-right">Price</div>
       </div>
       <ShoppingCardItem
-        name={'Reserve Your Scooter (March Delivery)'}
+        name={
+          <div>
+            <div>Reservation Fee ($1) - shipping in March</div>
+            <div> &nbsp;&nbsp;&nbsp;&nbsp;– $49/mo. plan</div>
+            <div> &nbsp;&nbsp;&nbsp;&nbsp;– $50 one-time set-up</div>
+          </div>
+        }
         image={BK_1}
         cost={costSV1}
         quantity={quantity}
         setQuantity={setQuantity}
       />
       <ShoppingCardItem
-        name={'Beyond Premium (free for 6 months)'}
-        image={logo2}
+        name={'Beyond Premiere (free for 6 months)'}
+        image={CreditCard}
         cost={0}
         quantity={quantity}
         setQuantity={setQuantity}
         disabled={true}
       />
-      <ShoppingCardItem
+      {/* <ShoppingCardItem
         name={'GPS Tracker & Lock (free for new riders)'}
         image={lock}
         cost={0}
         quantity={quantity}
         setQuantity={setQuantity}
         disabled={true}
-      />
+      /> */}
       <div className="row c-card__footer">
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Subtotal</div>

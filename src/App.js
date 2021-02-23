@@ -20,6 +20,7 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [zipcode, setZipcode] = useState('');
   const [showRight, setShowRight] = useState(false);
+  const [newsletter, setNewsletter] = useState(false);
   const [config, setconfig] = useState({
     publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
     productId: '',
@@ -66,6 +67,22 @@ const App = () => {
                 value={zipcode}
                 onChange={(e) => setZipcode(e.target.value)}
               />
+            </div>
+
+            <div class=" col-12 mt-3">
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  name="checkbox"
+                  value="checkbox"
+                  checked={newsletter}
+                  onClick={() => setNewsletter((value) => !value)}
+                />
+                <label for="checkbox">
+                  <span>subscribe to newsletter</span>
+                </label>
+              </div>
             </div>
           </div>
         </div>

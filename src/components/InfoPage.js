@@ -35,7 +35,6 @@ export default function InfoPage({ setShowRight, showRight }) {
     <div className="c-infopage-wrapper">
       <h2 className="c-infopage__title">SV1 Electric Scooter</h2>
       <div className="c-infopage__subtitle font-weight-bold">
-        $59/mo.{' '}
         <a href="#right-side">
           <span
             className=" web-view"
@@ -44,7 +43,7 @@ export default function InfoPage({ setShowRight, showRight }) {
             }}
             block
           >
-            (reserve now for only $1)
+            Reserve now for $1
           </span>
           <span
             className="mobile-view"
@@ -54,10 +53,13 @@ export default function InfoPage({ setShowRight, showRight }) {
             }}
             block
           >
-            (reserve now for only $1)
+            Reserve now for $1
           </span>
         </a>
+        {'  '}(arrives in March)
       </div>
+
+      <p className="">$49/mo. plan + Beyond Premiere free for 6 months</p>
       <div className="c-infopage__image-wrapper">
         <Image src={infoImages[selectedImage]} alt="asd" />
       </div>
@@ -80,8 +82,9 @@ export default function InfoPage({ setShowRight, showRight }) {
       <p className="c-infopage__description">
         The SV1 Electrcic Scooter integrates seamlessly with public
         transportation and comes Quorra-ready. With 15 miles of range per
-        battery, 28 km/h top speed, airless tires and weighing less than 26 lbs
-        – it easily folds so you can travel wherever the road takes you.
+        battery, 25 mph top speed, airless tires and weighing less than 26 lbs –
+        it easily folds so you can travel wherever the road takes you. There is
+        a one time set-up fee of $50 for new riders.
       </p>
       <div>
         <div className="row">
@@ -94,19 +97,7 @@ export default function InfoPage({ setShowRight, showRight }) {
               alignSelf: 'flex-end',
             }}
           >
-            $0 set-up fee (normally $50)
-          </div>
-        </div>
-        <div className="row">
-          <div className="">
-            <CheckIcon />
-          </div>
-          <div
-            className="pl-2 font-weight-bold"
-            style={{
-              alignSelf: 'flex-end',
-            }}
-          >
+            {/* $0 set-up fee (normally $50) */}
             month-to-month; cancel anytime
           </div>
         </div>
@@ -120,29 +111,70 @@ export default function InfoPage({ setShowRight, showRight }) {
               alignSelf: 'flex-end',
             }}
           >
+            {/* month-to-month; cancel anytime */}
             VIP same-day service & maintenance
           </div>
         </div>
+        <div className="row">
+          <div className="">
+            <CheckIcon />
+          </div>
+          <div
+            className="pl-2 font-weight-bold"
+            style={{
+              alignSelf: 'flex-end',
+            }}
+          >
+            {/* VIP same-day service & maintenance */}
+            arrives in March
+          </div>
+        </div>
       </div>
-      <div className="c-infopage__description-title mt-3">Includes</div>
+      <div className="c-infopage__description-title mt-3">Now Includes</div>
 
       <div className="c-infopage__promo">
         <div className="d-flex justify-content-between c-infopage__promo-title">
-          <div className="">Beyond Premium</div>
           <div className="">
-            (free for 6 months)
+            {/* Beyond Premium */}
+            Beyond Premiere
+          </div>
+          <div className="c-infopage__promo-title-right">
+            {/* (free for 6 months) */}
+            <span>free for 6 months</span>
+            <br /> normally $19/mo.
             {/* (free) */}
           </div>
         </div>
 
-        <div>– Mobile App powered by our AI "Quorra"</div>
+        <div className="c-infopage__promo-point"> * Smart Lock</div>
+        <div className="c-infopage__promo-point"> * 24/7 Support</div>
+        <div className="c-infopage__promo-point">
+          {' '}
+          * Local Maintenance, no questions asked
+        </div>
+        <div className="c-infopage__promo-point">
+          {' '}
+          * Free scooter repair or replacements, no questions asked
+        </div>
+        <div className="c-infopage__promo-point"> * Theft Insurance</div>
+        <div className="c-infopage__promo-point"> * GPS Tracking</div>
+        <div className="c-infopage__promo-point">
+          {' '}
+          * Exclusive member events and rides
+        </div>
+        <div className="c-infopage__promo-point">
+          {' '}
+          * Member-only discounts from top brands (coming soon)
+        </div>
+
+        {/* <div>– Mobile App powered by our AI "Quorra"</div>
         <div>– 24/7 VIP Support</div>
         <div>– Total scooter repair or replacement, no questions asked</div>
         <div>– Continuous Optimizations & Upgrades</div>
         <div>– Cancel Anytime</div>
-        <div>– Discount on accesories (coming soon)</div>
+        <div>– Discount on accesories (coming soon)</div> */}
       </div>
-      <div className="c-infopage__promo">
+      {/* <div className="c-infopage__promo">
         <div className="d-flex justify-content-between c-infopage__promo-title">
           <div className="">Integrated Smart Lock </div>
           <div className="">(free for new riders)</div>
@@ -158,7 +190,7 @@ export default function InfoPage({ setShowRight, showRight }) {
             <div> – Quorra-ready</div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {!showRight && (
         <div className="c-card__btn-wrapper">
@@ -171,7 +203,8 @@ export default function InfoPage({ setShowRight, showRight }) {
               }}
               block
             >
-              Reserve for $1
+              {/* Reserve for $1 */}
+              Submit
             </button>
             <button
               className="c-card__btn mobile-view"
@@ -181,7 +214,8 @@ export default function InfoPage({ setShowRight, showRight }) {
               }}
               block
             >
-              Reserve for $1
+              {/* Reserve for $1 */}
+              Submit
             </button>
           </a>
         </div>

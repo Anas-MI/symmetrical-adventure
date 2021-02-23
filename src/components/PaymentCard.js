@@ -171,7 +171,7 @@ const PaymentCard = (props) => {
           }}
           block
         >
-          Finish Order
+          Submit
         </button>
         <a href="#right-side-success">
           <button
@@ -179,7 +179,7 @@ const PaymentCard = (props) => {
             onClick={handleSubmit}
             block
           >
-            Finish Order
+            Submit
           </button>
         </a>
       </div>
