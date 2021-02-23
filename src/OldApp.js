@@ -18,7 +18,7 @@ const App = () => {
     publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
     productId: '',
     priceId: '',
-    PreOrderPriceId: '',
+    preOrderPriceId: '',
   });
 
   const getConfigKeys = async () => {
