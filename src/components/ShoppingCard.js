@@ -5,10 +5,15 @@ import BK_1 from '../assets/img/img1.png';
 import logo2 from '../assets/img/logo2.png';
 import lock from '../assets/img/lock.png';
 import CreditCard from '../assets/img/CreditCard.png';
+import { getShoppingContent } from '../pageContent';
 export default function ShoppingCard() {
   const [quantity, setQuantity] = useState(1);
   const costSV1 = 1;
   const taxSV1 = costSV1 * (8.875 / 100);
+  const inputContent = getShoppingContent();
+  const cardContent = inputContent.cardContent;
+  const footerConten = inputContent.footerConten;
+
   return (
     <Card
       title={<div className="c-card__title">Shopping Cart</div>}
@@ -21,35 +26,17 @@ export default function ShoppingCard() {
         <div className="col-3">Quantity</div>
         <div className="col-2 text-right">Price</div>
       </div>
-      <ShoppingCardItem
-        name={
-          <div>
-            <div>Reservation Fee ($1) - shipping in March</div>
-            <div> &nbsp;&nbsp;&nbsp;&nbsp;– $49/mo. plan</div>
-            <div> &nbsp;&nbsp;&nbsp;&nbsp;– $50 one-time set-up</div>
-          </div>
-        }
-        image={BK_1}
-        cost={costSV1}
-        quantity={quantity}
-        setQuantity={setQuantity}
-      />
-      <ShoppingCardItem
-        name={'Beyond Premiere (free for 6 months)'}
-        image={CreditCard}
-        cost={0}
-        quantity={quantity}
-        setQuantity={setQuantity}
-        disabled={true}
-      />
-      {/* <ShoppingCardItem
-        name={'GPS Tracker & Lock (free for new riders)'}
-        image={lock}
-        cost={0}
-        quantity={quantity}
-        setQuantity={setQuantity}
-        disabled={true}
-      /> */}
+      {cardContent.map((card, index) => (
+        <ShoppingCardItem
+          name={card.name}
+          image={card.image}
+          cost={card.cost}
+          quantity={quantity}
+          setQuantity={setQuantity}
+          disabled={card.disabled}
+        />
+      ))}
+
       <div className="row c-card__footer">
         <div className="col-6"></div>
         <div className="col-3 c-card__footer-subtotal">Subtotal</div>
@@ -67,11 +54,12 @@ export default function ShoppingCard() {
           ${((1 + 1 * taxSV1) * quantity).toFixed(2)}
         </div>
         <div className="c-card__footer-terms col-12">
-          <em>
-            * Monhtly subscription of $59 will begin at time of pickup
-            <br />
-            ** Pickup available at Beyond HQ (368 Broadway, New York, NY 10013)
-          </em>
+          {footerConten.map((f, index) => (
+            <em>
+              {f}
+              <br />
+            </em>
+          ))}
         </div>
       </div>
     </Card>

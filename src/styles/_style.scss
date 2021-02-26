@@ -122,7 +122,9 @@ select.c-input {
     }
   }
 }
-
+.pleft-5 {
+  padding-left: 14px;
+}
 // #into-section {
 //   .section-row {
 //     height: 100vh;
@@ -719,40 +721,41 @@ input[type='number'] {
     padding-right: 60px;
   }
 }
-@media only screen and (min-width: 427px) {
-  .transit {
-    -webkit-animation-duration: 0.5s;
-    -webkit-animation-name: slidein;
+//For transiiti
+// @media only screen and (min-width: 427px) {
+//   .transit {
+//     -webkit-animation-duration: 0.5s;
+//     -webkit-animation-name: slidein;
 
-    /*for firefox*/
-    -moz-animation-duration: 0.5s;
-    -moz-animation-name: slidein;
+//     /*for firefox*/
+//     -moz-animation-duration: 0.5s;
+//     -moz-animation-name: slidein;
 
-    /* for opera*/
-    -o-animation-duration: 0.5s;
-    -o-animation-name: slidein;
+//     /* for opera*/
+//     -o-animation-duration: 0.5s;
+//     -o-animation-name: slidein;
 
-    /* Standard syntax*/
-    animation-duration: 0.5s;
-    animation-name: slidein;
-  }
-  .transit1 {
-    -webkit-animation-duration: 1s;
-    -webkit-animation-name: slidein;
+//     /* Standard syntax*/
+//     animation-duration: 0.5s;
+//     animation-name: slidein;
+//   }
+//   .transit1 {
+//     -webkit-animation-duration: 1s;
+//     -webkit-animation-name: slidein;
 
-    /*for firefox*/
-    -moz-animation-duration: 1s;
-    -moz-animation-name: slidein;
+//     /*for firefox*/
+//     -moz-animation-duration: 1s;
+//     -moz-animation-name: slidein;
 
-    /* for opera*/
-    -o-animation-duration: 1s;
-    -o-animation-name: slidein;
+//     /* for opera*/
+//     -o-animation-duration: 1s;
+//     -o-animation-name: slidein;
 
-    /* Standard syntax*/
-    animation-duration: 1s;
-    animation-name: slidein;
-  }
-}
+//     /* Standard syntax*/
+//     animation-duration: 1s;
+//     animation-name: slidein;
+//   }
+// }
 @media only screen and (max-width: 426px) {
   .web-view {
     display: none;
