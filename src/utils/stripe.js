@@ -3,17 +3,30 @@ import { loadStripe } from '@stripe/stripe-js';
 import { message, notification } from 'antd';
 
 export const getAPIkeys = async () => {
-  const result = await api.get(`/stripe/setup`);
-  return result.data;
+  var beyond_config = localStorage.getItem('beyond_config');
+  console.log('requesting', beyond_config);
+
+  if (beyond_config) {
+    return JSON.parse(beyond_config);
+  } else {
+    const result = await api.get(`/stripe/setup`);
+
+    localStorage.setItem('beyond_config', JSON.stringify(result.data));
+    if (result.data) {
+      return result.data;
+    }
+  }
 };
 
 export const stripePromise = async () => {
-  const res = await getAPIkeys();
-  if (res.data) {
-    const { publishableKey } = res.data;
-    return loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97');
-  }
-  loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97');
+  const pkey = await getAPIkeys();
+  console.log('pk-api', pkey);
+
+  // if (res.data) {
+  //   const { publishableKey } = res.data;
+  //   return loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97');
+  // }
+  loadStripe(pkey || 'pk_test_1XPhRvBHCislCDxFaYm3HR97');
 };
 
 export const handleSubmitPayment = async (
@@ -48,7 +61,7 @@ export const handleSubmitPayment = async (
         (item) => item.email === payload.email
       );
     } else {
-      beyond_users = []
+      beyond_users = [];
     }
 
     if (alreadyUsers.length === 0 || beyond_users.length == 0) {
@@ -59,7 +72,7 @@ export const handleSubmitPayment = async (
           const _finalpayload = {
             customerId: id,
             paymentId,
-           // preOrderPriceId: config.preOrderPriceId,
+            // preOrderPriceId: config.preOrderPriceId,
             priceId: config.preOrderPriceId,
           };
 
@@ -93,17 +106,17 @@ export const handleSubmitPayment = async (
         customerId: alreadyUsers[0].customerId,
         paymentId,
         priceId: config.preOrderPriceId,
-       // preOrderPriceId: config.preOrderPriceId,
+        // preOrderPriceId: config.preOrderPriceId,
       };
 
       api
         .post(`/stripe/checkout`, _finalpayload)
         .then((res) => {
-          console.log(res)
+          console.log(res);
           cb();
           notification.success({ message: 'Payment successfull.' });
           onSuccess();
-          const { clientSecret } = res.data.data
+          const { clientSecret } = res.data.data;
         })
         .catch((err) => {
           cb();
@@ -111,7 +124,7 @@ export const handleSubmitPayment = async (
         });
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
     // message.error(error.message())
     // Let the user know that something went wrong here...
   }
