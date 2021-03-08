@@ -20,12 +20,7 @@ export const getAPIkeys = async () => {
 
 export const stripePromise = async () => {
   const pkey = await getAPIkeys();
-  console.log('pk-api', pkey);
 
-  // if (res.data) {
-  //   const { publishableKey } = res.data;
-  //   return loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97');
-  // }
   loadStripe(pkey || 'pk_test_1XPhRvBHCislCDxFaYm3HR97');
 };
 

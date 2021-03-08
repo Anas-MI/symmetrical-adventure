@@ -13,9 +13,7 @@ import Navbar from './components/Navbar';
 import { Card } from 'antd';
 
 const App = () => {
-  const [stripePromise, setstripePromise] = useState(
-    loadStripe('pk_test_1XPhRvBHCislCDxFaYm3HR97')
-  );
+  const [stripePromise, setstripePromise] = useState(null);
   const [stripeResponse, setStripeResponse] = useState(null);
   const [email, setEmail] = useState('');
   const [zipcode, setZipcode] = useState('');
@@ -23,7 +21,7 @@ const App = () => {
   const [showRight, setShowRight] = useState(true);
   const [newsletter, setNewsletter] = useState(false);
   const [config, setconfig] = useState({
-    publishableKey: 'pk_test_1XPhRvBHCislCDxFaYm3HR97',
+    publishableKey: '',
     productId: '',
     priceId: '',
     preOrderPriceId: '',

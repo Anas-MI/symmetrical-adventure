@@ -1,13 +1,10 @@
-import axios from 'axios'
-// import {config} from 'dotenv'
-// import path from 'path'
-
-// require('dotenv').config({ path: path.join(__dirname, '.env') })
+import axios from 'axios';
+const REACT_APP_API_URL = 'https://api.dev.ridebeyond.com';
 
 const api = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
-    withCredentials:true,
-})
+  baseURL: REACT_APP_API_URL,
+  withCredentials: true,
+});
 
-export const apiUrl = process.env.REACT_APP_API_URL
-export default api
+export const apiUrl = REACT_APP_API_URL;
+export default api;
