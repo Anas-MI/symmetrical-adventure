@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import logo1 from './assets/img/logo1.png';
-import { ArrowLeftOutlined } from '@ant-design/icons';
-import FormCard from './components/formCard';
+
 import ShoppingCard from './components/ShoppingCard';
 import PaymentCard from './components/PaymentCard';
-import DeliveryCard from './components/DeliveryCard';
 import InfoPage from './components/InfoPage';
 import { getAPIkeys } from './utils/stripe';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import Navbar from './components/Navbar';
-import { Card } from 'antd';
+import SuccessPayment from './components/successPayment';
+import RiderCard from './components/RiderCard';
 
 const App = () => {
   const [stripePromise, setstripePromise] = useState(null);
   const [stripeResponse, setStripeResponse] = useState(null);
   const [email, setEmail] = useState('');
   const [zipcode, setZipcode] = useState('');
-  // const [showRight, setShowRight] = useState(false);
   const [showRight, setShowRight] = useState(true);
   const [newsletter, setNewsletter] = useState(false);
   const [config, setconfig] = useState({
@@ -26,8 +23,6 @@ const App = () => {
     priceId: '',
     preOrderPriceId: '',
   });
-
-  console.log(config, '_____________--');
 
   const getConfigKeys = async () => {
     const result = await getAPIkeys();
@@ -44,50 +39,14 @@ const App = () => {
   const rightSide1 = (
     <div className={'transit'}>
       <ShoppingCard />
-      <Card
-        title={<div className="c-card__title">Rider Info</div>}
-        bordered={false}
-        className="c-card border-0"
-      >
-        <div className="pb-3">
-          <div className="row c-card__input ">
-            <div className="col-6">
-              <input
-                className="c-input"
-                placeholder="Email"
-                name="email"
-                value={email.email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="col-6">
-              <input
-                name="zipcode"
-                className="c-input"
-                placeholder="Zip Code"
-                value={zipcode}
-                onChange={(e) => setZipcode(e.target.value)}
-              />
-            </div>
-
-            <div class=" col-12 mt-3">
-              <div class="checkbox">
-                <input
-                  type="checkbox"
-                  id="checkbox"
-                  name="checkbox"
-                  value="checkbox"
-                  checked={newsletter}
-                  onClick={() => setNewsletter((value) => !value)}
-                />
-                <label for="checkbox">
-                  <span>subscribe to newsletter</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Card>
+      <RiderCard
+        newsletter={newsletter}
+        zipcode={zipcode}
+        email={email}
+        setNewsletter={setNewsletter}
+        setZipcode={setZipcode}
+        setEmail={setEmail}
+      />
       <Elements stripe={stripePromise}>
         <PaymentCard
           config={config}
@@ -96,29 +55,6 @@ const App = () => {
           zipcode={zipcode}
         />
       </Elements>
-    </div>
-  );
-
-  const rightSide2 = (
-    <div
-      id="right-side-success"
-      className=" transit1 c-checkout__right-side-success "
-    >
-      <div className="c-checkout__right-side-success-title">
-        Your subscription has successfully processed!
-      </div>
-      <div className="c-checkout__right-side-success-subtitle">What Next?</div>
-      <div className="c-checkout__right-side-success-content">
-        1. Download the
-        <a href="https://apps.apple.com/app/id1543945606"> Beyond iPhone app</a>
-      </div>
-      <div className="c-checkout__right-side-success-content">
-        2. Check your email to begin your{' '}
-        <a href="https://help.ridebeyond.com/en/articles/4576251-quick-start-guide-sv1-electric-scooter">
-          {' '}
-          onboarding
-        </a>
-      </div>
     </div>
   );
 
@@ -135,11 +71,11 @@ const App = () => {
         >
           <div className="mobile-view">
             {showRight && rightSide1}
-            {showRight && stripeResponse === 'success' && rightSide2}
+            {showRight && stripeResponse === 'success' && <SuccessPayment />}
           </div>
           <div className="web-view">
             {showRight && stripeResponse !== 'success' && rightSide1}
-            {showRight && stripeResponse === 'success' && rightSide2}
+            {showRight && stripeResponse === 'success' && <SuccessPayment />}
           </div>
         </div>
       </div>

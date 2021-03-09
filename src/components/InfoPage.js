@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-// import BK_1 from '../assets/img/BK_1.png';
-import img1 from '../assets/img/img1.png';
-import BK_1 from '../assets/img/BK_1.png';
+
+import img1 from '../assets/img/img1Full.png';
 import img2 from '../assets/img/img2.png';
-// import img3 from '../assets/img/img3.jpg';
-// import img4 from '../assets/img/img4.jpg';
-import img5 from '../assets/img/img5.jpg';
-import img1full from '../assets/img/img1Full.png';
-// import img6 from '../assets/img/img6.jpg';
-// import img7 from '../assets/img/img7.jpg';
 
 import image1 from '../assets/img/image1.png';
 import image2 from '../assets/img/image2.png';
-import image3 from '../assets/img/image3.png';
+import image3 from '../assets/img/img5.jpg';
 
-import lock from '../assets/img/lock.png';
 import { CheckIcon } from '../assets/Icons/CustomIcons';
 import { Image } from 'antd';
 
@@ -23,12 +15,12 @@ export default function InfoPage({ setShowRight, showRight }) {
   const infoImages = {
     1: image1,
     2: image2,
-    3: img5,
+    3: image3,
   };
   const infoImagesTab = {
-    1: img1full,
+    1: img1,
     2: img2,
-    3: img5,
+    3: image3,
   };
 
   return (
@@ -48,7 +40,6 @@ export default function InfoPage({ setShowRight, showRight }) {
           <span
             className="mobile-view"
             onClick={() => {
-              // setTimeout(() => setShowRight(true), 350);
               setShowRight(true);
             }}
             block
@@ -97,7 +88,6 @@ export default function InfoPage({ setShowRight, showRight }) {
               alignSelf: 'flex-end',
             }}
           >
-            {/* $0 set-up fee (normally $50) */}
             month-to-month; cancel anytime
           </div>
         </div>
@@ -111,7 +101,6 @@ export default function InfoPage({ setShowRight, showRight }) {
               alignSelf: 'flex-end',
             }}
           >
-            {/* month-to-month; cancel anytime */}
             VIP same-day service & maintenance
           </div>
         </div>
@@ -125,7 +114,6 @@ export default function InfoPage({ setShowRight, showRight }) {
               alignSelf: 'flex-end',
             }}
           >
-            {/* VIP same-day service & maintenance */}
             arrives in March
           </div>
         </div>
@@ -134,15 +122,9 @@ export default function InfoPage({ setShowRight, showRight }) {
 
       <div className="c-infopage__promo">
         <div className="d-flex justify-content-between c-infopage__promo-title">
-          <div className="">
-            {/* Beyond Premium */}
-            Beyond Premiere
-          </div>
+          <div className="">Beyond Premiere</div>
           <div className="c-infopage__promo-title-right">
-            {/* (free for 6 months) */}
             <span>free for 6 months</span>
-            <br /> normally $19/mo.
-            {/* (free) */}
           </div>
         </div>
 
@@ -166,35 +148,10 @@ export default function InfoPage({ setShowRight, showRight }) {
           {' '}
           * Member-only discounts from top brands (coming soon)
         </div>
-
-        {/* <div>– Mobile App powered by our AI "Quorra"</div>
-        <div>– 24/7 VIP Support</div>
-        <div>– Total scooter repair or replacement, no questions asked</div>
-        <div>– Continuous Optimizations & Upgrades</div>
-        <div>– Cancel Anytime</div>
-        <div>– Discount on accesories (coming soon)</div> */}
       </div>
-      {/* <div className="c-infopage__promo">
-        <div className="d-flex justify-content-between c-infopage__promo-title">
-          <div className="">Integrated Smart Lock </div>
-          <div className="">(free for new riders)</div>
-        </div>
-        <div className="row">
-          <div className="col-3 p-0 m-auto">
-            <img src={lock} alt="lock" />
-          </div>
-          <div className="col-9">
-            <div> – GPS tracking; easily find your scooter</div>
-            <div> – Theft protection</div>
-            <div> – Control from the Beyond mobile app</div>
-            <div> – Quorra-ready</div>
-          </div>
-        </div>
-      </div> */}
 
       {!showRight && (
         <div className="c-card__btn-wrapper">
-          {/* c-checkout */}
           <a href="#right-side">
             <button
               className="c-card__btn web-view"
@@ -203,18 +160,15 @@ export default function InfoPage({ setShowRight, showRight }) {
               }}
               block
             >
-              {/* Reserve for $1 */}
               Submit
             </button>
             <button
               className="c-card__btn mobile-view"
               onClick={() => {
-                // setTimeout(() => setShowRight(true), 350);
                 setShowRight(true);
               }}
               block
             >
-              {/* Reserve for $1 */}
               Submit
             </button>
           </a>

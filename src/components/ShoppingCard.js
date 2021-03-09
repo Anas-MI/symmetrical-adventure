@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Card } from 'antd';
-import { ShoppingExtraIcon, ShippingIcon2 } from '../assets/Icons/CustomIcons';
-import BK_1 from '../assets/img/img1.png';
-import logo2 from '../assets/img/logo2.png';
-import lock from '../assets/img/lock.png';
-import CreditCard from '../assets/img/CreditCard.png';
+import { ShippingIcon2 } from '../assets/Icons/CustomIcons';
 import { getShoppingContent } from '../pageContent';
+
 export default function ShoppingCard() {
   const [quantity, setQuantity] = useState(1);
   const costSV1 = 1;
@@ -71,11 +68,7 @@ const ShoppingCardItem = (props) => {
     <div className="row c-card__item">
       <div className="col-2">
         <img
-          src={
-            props.image !== ''
-              ? props.image
-              : 'https://media.istockphoto.com/photos/background-blue-gradient-abstract-picture-id910021106?k=6&m=910021106&s=612x612&w=0&h=dJ1HiBOr6KTiE5c1odNULI8MbYdpDSZAZD_uS_NEGHQ='
-          }
+          src={props.image && props.image}
           alt={props.name}
           height={50}
           width={50}

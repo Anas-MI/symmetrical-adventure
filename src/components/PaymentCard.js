@@ -1,34 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import payment from '../assets/img/payment.jpg';
 import { VisaIcon } from '../assets/Icons/CustomIcons';
-import cvc from '../assets/img/cvc.png';
 import yourhandle from 'countrycitystatejson';
-import { AppleFilled } from '@ant-design/icons';
-import {
-  Button,
-  Divider,
-  Form,
-  Input,
-  Select,
-  message,
-  notification,
-} from 'antd';
-import InputMask from 'react-input-mask';
-import api from '../resources/api';
-import { getConfig } from '@testing-library/react';
-import { handleSubmitPayment, getAPIkeys } from '../utils/stripe';
+import { handleSubmitPayment } from '../utils/stripe';
 import {
   CardNumberElement,
   CardExpiryElement,
   CardCvcElement,
-  Elements,
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
 import { Card } from 'antd';
 
 import { Spin } from 'antd';
-const { Option } = Select;
 
 const PaymentCard = (props) => {
   const { config, setStripeResponse, email } = props;
@@ -56,13 +39,6 @@ const PaymentCard = (props) => {
   };
 
   const handleSubmit = (values) => {
-    // const payload = {
-    //   email: values.email,
-    //   name: values.name,
-    // };
-
-    // setStripeResponse('success');
-
     const payload = {
       name: fName + ' ' + lName,
       email: email,
@@ -98,10 +74,8 @@ const PaymentCard = (props) => {
       <Card
         title={<div className="c-card__title">Payment</div>}
         bordered={false}
-        // extra={<DeliveryExtraIcon />}
         className="c-card border-0"
       >
-        {/* <Form onFinish={handleSubmit} layout="vertical"> */}
         <div className="row c-card-payment">
           <div className=" col-lg-6 col-xs-12">
             <CardNumberElement className="c-input" />

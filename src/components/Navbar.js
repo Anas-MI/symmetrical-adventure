@@ -1,6 +1,5 @@
 import React from 'react';
-import { ShoppingIcon } from '../assets/Icons/CustomIcons';
-import Ellipse25 from '../assets/img/Ellipse25.png';
+
 import logo_nav from '../assets/img/logo_nav.png';
 export default function Navbar() {
   return (
