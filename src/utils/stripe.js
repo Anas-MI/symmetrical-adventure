@@ -4,8 +4,6 @@ import { message, notification } from 'antd';
 
 export const getAPIkeys = async () => {
   var beyond_config = localStorage.getItem('beyond_config');
-  console.log('requesting', beyond_config);
-
   if (beyond_config) {
     return JSON.parse(beyond_config);
   } else {
@@ -20,7 +18,6 @@ export const getAPIkeys = async () => {
 
 export const stripePromise = async () => {
   const pkey = await getAPIkeys();
-
   loadStripe(pkey || 'pk_test_1XPhRvBHCislCDxFaYm3HR97');
 };
 
@@ -59,43 +56,41 @@ export const handleSubmitPayment = async (
       beyond_users = [];
     }
 
-    if (alreadyUsers.length === 0 || beyond_users.length == 0) {
-      api
-        .post(`/stripe/customer`, { email: payload.email, name: payload.name })
-        .then(async function (res) {
-          const id = res.data.customerId;
-          const _finalpayload = {
-            customerId: id,
-            paymentId,
-            // preOrderPriceId: config.preOrderPriceId,
-            priceId: config.preOrderPriceId,
-          };
+    if (alreadyUsers.length === 0 || beyond_users.length === 0) {
+      const res = await api.post(`/stripe/customer`, {
+        email: payload.email,
+        name: payload.name,
+      });
 
-          beyond_users.push({ email: payload.email, customerId: id });
-          localStorage.setItem('beyond_users', JSON.stringify(beyond_users));
+      if (res && res.status === 200) {
+        const id = res.data.customerId;
+        const _finalpayload = {
+          customerId: id,
+          paymentId,
+          // preOrderPriceId: config.preOrderPriceId,
+          priceId: config.preOrderPriceId,
+        };
 
-          api
-            .post(`/stripe/checkout`, _finalpayload)
-            .then((res) => {
-              cb();
-              notification.success({ message: 'Payment successfull.' });
-              onSuccess();
-              //const { clientSecret } = res.data
-            })
-            .catch((err) => {
-              cb();
-              notification.error({ message: 'Something went wrong' });
-            });
-        })
-        .catch((err) => {
+        beyond_users.push({ email: payload.email, customerId: id });
+        localStorage.setItem('beyond_users', JSON.stringify(beyond_users));
+
+        const response = await api.post(`/stripe/checkout`, _finalpayload);
+        if (response && response.status === 200) {
           cb();
-          notification.error({
-            message:
-              err.response && err.response.data && err.response.data.message
-                ? err.response.data.message
-                : 'Something went wrong',
-          });
+          notification.success({ message: 'Payment successfull.' });
+          onSuccess();
+        } else {
+          notification.error({ message: 'Something went wrong' });
+        }
+      } else {
+        cb();
+        notification.error({
+          message:
+            res.response && res.response.data && res.response.data.message
+              ? res.response.data.message
+              : 'Something went wrong',
         });
+      }
     } else {
       const _finalpayload = {
         customerId: alreadyUsers[0].customerId,
@@ -104,23 +99,18 @@ export const handleSubmitPayment = async (
         // preOrderPriceId: config.preOrderPriceId,
       };
 
-      api
-        .post(`/stripe/checkout`, _finalpayload)
-        .then((res) => {
-          console.log(res);
-          cb();
-          notification.success({ message: 'Payment successfull.' });
-          onSuccess();
-          const { clientSecret } = res.data.data;
-        })
-        .catch((err) => {
-          cb();
-          notification.error({ message: 'Something went wrong' });
-        });
+      const res = await api.post(`/stripe/checkout`, _finalpayload);
+
+      if (res && res.status === 200) {
+        cb();
+        notification.success({ message: 'Payment successfull.' });
+        onSuccess();
+      } else {
+        cb();
+        notification.error({ message: 'Something went wrong' });
+      }
     }
   } catch (error) {
     console.log(error);
-    // message.error(error.message())
-    // Let the user know that something went wrong here...
   }
 };

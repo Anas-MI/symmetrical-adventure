@@ -7,7 +7,6 @@ const location = window.location;
 
 export const getShoppingContent = () => {
   const path = location.pathname;
-  console.log(path);
   const content = {
     reservation: {
       cardContent: [

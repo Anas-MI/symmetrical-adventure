@@ -10,7 +10,7 @@ import image3 from '../assets/img/img5.jpg';
 import { CheckIcon } from '../assets/Icons/CustomIcons';
 import { Image } from 'antd';
 
-export default function InfoPage({ setShowRight, showRight }) {
+export default function InfoPage() {
   const [selectedImage, setSelectedImage] = useState(1);
   const infoImages = {
     1: image1,
@@ -28,22 +28,10 @@ export default function InfoPage({ setShowRight, showRight }) {
       <h2 className="c-infopage__title">SV1 Electric Scooter</h2>
       <div className="c-infopage__subtitle font-weight-bold">
         <a href="#right-side">
-          <span
-            className=" web-view"
-            onClick={() => {
-              setTimeout(() => setShowRight(true), 350);
-            }}
-            block
-          >
+          <span className=" web-view" block>
             Reserve now for $1
           </span>
-          <span
-            className="mobile-view"
-            onClick={() => {
-              setShowRight(true);
-            }}
-            block
-          >
+          <span className="mobile-view" block>
             Reserve now for $1
           </span>
         </a>
@@ -149,31 +137,6 @@ export default function InfoPage({ setShowRight, showRight }) {
           * Member-only discounts from top brands (coming soon)
         </div>
       </div>
-
-      {!showRight && (
-        <div className="c-card__btn-wrapper">
-          <a href="#right-side">
-            <button
-              className="c-card__btn web-view"
-              onClick={() => {
-                setTimeout(() => setShowRight(true), 350);
-              }}
-              block
-            >
-              Submit
-            </button>
-            <button
-              className="c-card__btn mobile-view"
-              onClick={() => {
-                setShowRight(true);
-              }}
-              block
-            >
-              Submit
-            </button>
-          </a>
-        </div>
-      )}
     </div>
   );
 }

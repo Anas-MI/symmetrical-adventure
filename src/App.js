@@ -15,7 +15,6 @@ const App = () => {
   const [stripeResponse, setStripeResponse] = useState(null);
   const [email, setEmail] = useState('');
   const [zipcode, setZipcode] = useState('');
-  const [showRight, setShowRight] = useState(true);
   const [newsletter, setNewsletter] = useState(false);
   const [config, setconfig] = useState({
     publishableKey: '',
@@ -26,6 +25,7 @@ const App = () => {
 
   const getConfigKeys = async () => {
     const result = await getAPIkeys();
+
     if (result) {
       setconfig(result);
       setstripePromise(loadStripe(result.publishableKey));
@@ -63,19 +63,19 @@ const App = () => {
       <Navbar />
       <div className="c-checkout row">
         <div className="c-checkout__left-side col-md-6 col-xs-12 ">
-          <InfoPage setShowRight={setShowRight} showRight={showRight} />
+          <InfoPage />
         </div>
         <div
           className="c-checkout__right-side   col-md-6 col-xs-12 "
           id="right-side"
         >
           <div className="mobile-view">
-            {showRight && rightSide1}
-            {showRight && stripeResponse === 'success' && <SuccessPayment />}
+            {rightSide1}
+            {stripeResponse === 'success' && <SuccessPayment />}
           </div>
           <div className="web-view">
-            {showRight && stripeResponse !== 'success' && rightSide1}
-            {showRight && stripeResponse === 'success' && <SuccessPayment />}
+            {stripeResponse !== 'success' && rightSide1}
+            {stripeResponse === 'success' && <SuccessPayment />}
           </div>
         </div>
       </div>
